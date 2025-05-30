@@ -1,184 +1,143 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2575.5">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px 'Helvetica Neue'; color: #181a1e; -webkit-text-stroke: #181a1e; min-height: 17.0px}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px '.AppleSystemUIFontMonospaced'; color: #0a3a9e; -webkit-text-stroke: #0a3a9e}
-    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: right; font: 12.0px '.AppleSystemUIFontMonospaced'; color: #47505b; -webkit-text-stroke: #47505b; min-height: 15.0px}
-    p.p4 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px '.AppleSystemUIFontMonospaced'; color: #181a1e; -webkit-text-stroke: #181a1e; min-height: 15.0px}
-    p.p5 {margin: 0.0px 0.0px 10.7px 0.0px; font: 16.0px Helvetica; -webkit-text-stroke: #000000}
-    span.s1 {font-kerning: none}
-    table.t1 {background-color: #ffffff; border-collapse: collapse}
-    td.td1 {width: 131.3px; padding: 0.0px 10.0px 0.0px 10.0px}
-    td.td2 {width: 131.3px; min-width: 50.0px; padding: 0.0px 10.0px 0.0px 10.0px}
-    td.td3 {width: 20.0px; padding: 0.0px 10.0px 0.0px 10.0px}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lulo Card</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #ffffff;
+      color: #333;
+      line-height: 1.6;
+    }
+    header {
+      background-color: #ffcc00;
+      padding: 1rem;
+      text-align: center;
+    }
+    header img {
+      max-height: 60px;
+      vertical-align: middle;
+    }
+    h1 {
+      margin-top: 1rem;
+      font-size: 2rem;
+      color: #222;
+    }
+    .content {
+      padding: 2rem;
+      text-align: center;
+    }
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .feature {
+      background-color: #f9f9f9;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      padding: 1.5rem;
+      width: 280px;
+    }
+    .feature h3 {
+      color: #ff6600;
+      margin-bottom: 1rem;
+    }
+    .cta-button {
+      display: inline-block;
+      margin-top: 2rem;
+      background-color: #ff6600;
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+    .cta-button:hover {
+      background-color: #cc5200;
+    }
+    form {
+      margin-top: 3rem;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: left;
+    }
+    form input, form textarea {
+      width: 100%;
+      padding: 0.8rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    form button {
+      background-color: #ff6600;
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    form button:hover {
+      background-color: #cc5200;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background-color: #f0f0f0;
+      color: #666;
+      margin-top: 2rem;
+    }
   </style>
 </head>
 <body>
-<p class="p1"><span class="s1"></span><br></p>
-<table cellspacing="0" cellpadding="0" class="t1">
-  <tbody>
-    <tr>
-      <td valign="top" class="td1">
-        <p class="p2"><span class="s1">&lt;!doctype html&gt;</span></p>
-      </td>
-    </tr>
-    <tr>
-      <td valign="top" class="td2">
-        <p class="p3"><span class="s1"></span><br></p>
-      </td>
-      <td valign="top" class="td3">
-        <p class="p4"><span class="s1"></span><br></p>
-      </td>
-    </tr>
-  </tbody>
-</table>
-<p class="p5"><span class="s1">&lt;html lang="en"&gt;</span></p>
-<p class="p5"><span class="s1">&lt;head&gt;</span></p>
-<p class="p5"><span class="s1">  &lt;meta charset="UTF-8" /&gt;</span></p>
-<p class="p5"><span class="s1">  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;</span></p>
-<p class="p5"><span class="s1">  &lt;title&gt;Lulo Card&lt;/title&gt;</span></p>
-<p class="p5"><span class="s1">  &lt;link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&amp;display=swap" rel="stylesheet"&gt;</span></p>
-<p class="p5"><span class="s1">  &lt;style&gt;</span></p>
-<p class="p5"><span class="s1">    * {</span></p>
-<p class="p5"><span class="s1">      box-sizing: border-box;</span></p>
-<p class="p5"><span class="s1">      margin: 0;</span></p>
-<p class="p5"><span class="s1">      padding: 0;</span></p>
-<p class="p5"><span class="s1">    }</span></p>
-<p class="p5"><span class="s1">    body {</span></p>
-<p class="p5"><span class="s1">      font-family: 'Montserrat', sans-serif;</span></p>
-<p class="p5"><span class="s1">      background-color: #ffffff;</span></p>
-<p class="p5"><span class="s1">      color: #333;</span></p>
-<p class="p5"><span class="s1">      line-height: 1.6;</span></p>
-<p class="p5"><span class="s1">    }</span></p>
-<p class="p5"><span class="s1">    header {</span></p>
-<p class="p5"><span class="s1">      background-color: #ffcc00;</span></p>
-<p class="p5"><span class="s1">      padding: 1rem;</span></p>
-<p class="p5"><span class="s1">      text-align: center;</span></p>
-<p class="p5"><span class="s1">    }</span></p>
-<p class="p5"><span class="s1">    header img {</span></p>
-<p class="p5"><span class="s1">      max-height: 60px;</span></p>
-<p class="p5"><span class="s1">      vertical-align: middle;</span></p>
-<p class="p5"><span class="s1">    }</span></p>
-<p class="p5"><span class="s1">    h1 {</span></p>
-<p class="p5"><span class="s1">      margin-top: 1rem;</span></p>
-<p class="p5"><span class="s1">      font-size: 2rem;</span></p>
-<p class="p5"><span class="s1">      color: #222;</span></p>
-<p class="p5"><span class="s1">    }</span></p>
-<p class="p5"><span class="s1">    .content {</span></p>
-<p class="p5"><span class="s1">      padding: 2rem;</span></p>
-<p class="p5"><span class="s1">      text-align: center;</span></p>
-<p class="p5"><span class="s1">    }</span></p>
-<p class="p5"><span class="s1">    .features {</span></p>
-<p class="p5"><span class="s1">      display: flex;</span></p>
-<p class="p5"><span class="s1">      flex-wrap: wrap;</span></p>
-<p class="p5"><span class="s1">      justify-content: center;</span></p>
-<p class="p5"><span class="s1">      gap: 2rem;</span></p>
-<p class="p5"><span class="s1">      margin-top: 2rem;</span></p>
-<p class="p5"><span class="s1">    }</span></p>
-<p class="p5"><span class="s1">    .feature {</span></p>
-<p class="p5"><span class="s1">      background-color: #f9f9f9;</span></p>
-<p class="p5"><span class="s1">      border-radius: 10px;</span></p>
-<p class="p5"><span class="s1">      box-shadow: 0 4px 6px rgba(0,0,0,0.1);</span></p>
-<p class="p5"><span class="s1">      padding: 1.5rem;</span></p>
-<p class="p5"><span class="s1">      width: 280px;</span></p>
-<p class="p5"><span class="s1">    }</span></p>
-<p class="p5"><span class="s1">    .feature h3 {</span></p>
-<p class="p5"><span class="s1">      color: #ff6600;</span></p>
-<p class="p5"><span class="s1">      margin-bottom: 1rem;</span></p>
-<p class="p5"><span class="s1">    }</span></p>
-<p class="p5"><span class="s1">    .cta-button {</span></p>
-<p class="p5"><span class="s1">      display: inline-block;</span></p>
-<p class="p5"><span class="s1">      margin-top: 2rem;</span></p>
-<p class="p5"><span class="s1">      background-color: #ff6600;</span></p>
-<p class="p5"><span class="s1">      color: white;</span></p>
-<p class="p5"><span class="s1">      padding: 1rem 2rem;</span></p>
-<p class="p5"><span class="s1">      border-radius: 5px;</span></p>
-<p class="p5"><span class="s1">      text-decoration: none;</span></p>
-<p class="p5"><span class="s1">      font-weight: bold;</span></p>
-<p class="p5"><span class="s1">      transition: background-color 0.3s ease;</span></p>
-<p class="p5"><span class="s1">    }</span></p>
-<p class="p5"><span class="s1">    .cta-button:hover {</span></p>
-<p class="p5"><span class="s1">      background-color: #cc5200;</span></p>
-<p class="p5"><span class="s1">    }</span></p>
-<p class="p5"><span class="s1">    form {</span></p>
-<p class="p5"><span class="s1">      margin-top: 3rem;</span></p>
-<p class="p5"><span class="s1">      max-width: 500px;</span></p>
-<p class="p5"><span class="s1">      margin-left: auto;</span></p>
-<p class="p5"><span class="s1">      margin-right: auto;</span></p>
-<p class="p5"><span class="s1">      text-align: left;</span></p>
-<p class="p5"><span class="s1">    }</span></p>
-<p class="p5"><span class="s1">    form input, form textarea {</span></p>
-<p class="p5"><span class="s1">      width: 100%;</span></p>
-<p class="p5"><span class="s1">      padding: 0.8rem;</span></p>
-<p class="p5"><span class="s1">      margin-bottom: 1rem;</span></p>
-<p class="p5"><span class="s1">      border: 1px solid #ccc;</span></p>
-<p class="p5"><span class="s1">      border-radius: 5px;</span></p>
-<p class="p5"><span class="s1">    }</span></p>
-<p class="p5"><span class="s1">    form button {</span></p>
-<p class="p5"><span class="s1">      background-color: #ff6600;</span></p>
-<p class="p5"><span class="s1">      color: white;</span></p>
-<p class="p5"><span class="s1">      padding: 0.8rem 1.5rem;</span></p>
-<p class="p5"><span class="s1">      border: none;</span></p>
-<p class="p5"><span class="s1">      border-radius: 5px;</span></p>
-<p class="p5"><span class="s1">      cursor: pointer;</span></p>
-<p class="p5"><span class="s1">    }</span></p>
-<p class="p5"><span class="s1">    form button:hover {</span></p>
-<p class="p5"><span class="s1">      background-color: #cc5200;</span></p>
-<p class="p5"><span class="s1">    }</span></p>
-<p class="p5"><span class="s1">    footer {</span></p>
-<p class="p5"><span class="s1">      text-align: center;</span></p>
-<p class="p5"><span class="s1">      padding: 2rem;</span></p>
-<p class="p5"><span class="s1">      background-color: #f0f0f0;</span></p>
-<p class="p5"><span class="s1">      color: #666;</span></p>
-<p class="p5"><span class="s1">      margin-top: 2rem;</span></p>
-<p class="p5"><span class="s1">    }</span></p>
-<p class="p5"><span class="s1">  &lt;/style&gt;</span></p>
-<p class="p5"><span class="s1">&lt;/head&gt;</span></p>
-<p class="p5"><span class="s1">&lt;body&gt;</span></p>
-<p class="p5"><span class="s1">  &lt;header&gt;</span></p>
-<p class="p5"><span class="s1">    &lt;img src="lulo-logo.png" alt="Lulo Card Logo"&gt;</span></p>
-<p class="p5"><span class="s1">    &lt;h1&gt;Welcome to Lulo Card&lt;/h1&gt;</span></p>
-<p class="p5"><span class="s1">  &lt;/header&gt;</span></p>
-<p class="p5"><span class="s1"> </span></p>
-<p class="p5"><span class="s1">  &lt;div class="content"&gt;</span></p>
-<p class="p5"><span class="s1">    &lt;p&gt;Lulo Card is your fresh new way to manage payments with flavor and freedom. Experience the power of secure, smart, and simple credit built for the future.&lt;/p&gt;</span></p>
-<p class="p5"><span class="s1"> </span></p>
-<p class="p5"><span class="s1">    &lt;div class="features"&gt;</span></p>
-<p class="p5"><span class="s1">      &lt;div class="feature"&gt;</span></p>
-<p class="p5"><span class="s1">        &lt;h3&gt;Global Payments&lt;/h3&gt;</span></p>
-<p class="p5"><span class="s1">        &lt;p&gt;Use your Lulo Card anywhere in the world with competitive exchange rates and zero hidden fees.&lt;/p&gt;</span></p>
-<p class="p5"><span class="s1">      &lt;/div&gt;</span></p>
-<p class="p5"><span class="s1">      &lt;div class="feature"&gt;</span></p>
-<p class="p5"><span class="s1">        &lt;h3&gt;Mobile Ready&lt;/h3&gt;</span></p>
-<p class="p5"><span class="s1">        &lt;p&gt;Manage your card, transactions, and limits from our sleek mobile app—anytime, anywhere.&lt;/p&gt;</span></p>
-<p class="p5"><span class="s1">      &lt;/div&gt;</span></p>
-<p class="p5"><span class="s1">      &lt;div class="feature"&gt;</span></p>
-<p class="p5"><span class="s1">        &lt;h3&gt;Rewarding Experience&lt;/h3&gt;</span></p>
-<p class="p5"><span class="s1">        &lt;p&gt;Earn rewards every time you use your Lulo Card—spend smarter and get more from your purchases.&lt;/p&gt;</span></p>
-<p class="p5"><span class="s1">      &lt;/div&gt;</span></p>
-<p class="p5"><span class="s1">    &lt;/div&gt;</span></p>
-<p class="p5"><span class="s1"> </span></p>
-<p class="p5"><span class="s1">    &lt;a class="cta-button" href="#apply"&gt;Apply Now&lt;/a&gt;</span></p>
-<p class="p5"><span class="s1"> </span></p>
-<p class="p5"><span class="s1">    &lt;form id="apply" action="mailto:info@lulocard.com" method="POST" enctype="text/plain"&gt;</span></p>
-<p class="p5"><span class="s1">      &lt;h2&gt;Apply for Your Lulo Card&lt;/h2&gt;</span></p>
-<p class="p5"><span class="s1">      &lt;input type="text" name="name" placeholder="Your Name" required&gt;</span></p>
-<p class="p5"><span class="s1">      &lt;input type="email" name="email" placeholder="Your Email" required&gt;</span></p>
-<p class="p5"><span class="s1">      &lt;textarea name="message" rows="4" placeholder="Tell us why you want a Lulo Card"&gt;&lt;/textarea&gt;</span></p>
-<p class="p5"><span class="s1">      &lt;button type="submit"&gt;Submit Application&lt;/button&gt;</span></p>
-<p class="p5"><span class="s1">    &lt;/form&gt;</span></p>
-<p class="p5"><span class="s1">  &lt;/div&gt;</span></p>
-<p class="p5"><span class="s1"> </span></p>
-<p class="p5"><span class="s1">  &lt;footer&gt;</span></p>
-<p class="p5"><span class="s1">    &amp;copy; 2025 Lulo Card. All rights reserved.</span></p>
-<p class="p5"><span class="s1">  &lt;/footer&gt;</span></p>
-<p class="p5"><span class="s1">&lt;/body&gt;</span></p>
-<p class="p5"><span class="s1">&lt;/html&gt;</span></p>
+  <header>
+    <img src="lulo-logo.png" alt="Lulo Card Logo">
+    <h1>Welcome to Lulo Card</h1>
+  </header>
+
+  <div class="content">
+    <p>Lulo Card is your fresh new way to manage payments with flavor and freedom. Experience the power of secure, smart, and simple credit built for the future.</p>
+
+    <div class="features">
+      <div class="feature">
+        <h3>Global Payments</h3>
+        <p>Use your Lulo Card anywhere in the world with competitive exchange rates and zero hidden fees.</p>
+      </div>
+      <div class="feature">
+        <h3>Mobile Ready</h3>
+        <p>Manage your card, transactions, and limits from our sleek mobile app—anytime, anywhere.</p>
+      </div>
+      <div class="feature">
+        <h3>Rewarding Experience</h3>
+        <p>Earn rewards every time you use your Lulo Card—spend smarter and get more from your purchases.</p>
+      </div>
+    </div>
+
+    <a class="cta-button" href="#apply">Apply Now</a>
+
+    <form id="apply" action="mailto:info@lulocard.com" method="POST" enctype="text/plain">
+      <h2>Apply for Your Lulo Card</h2>
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" rows="4" placeholder="Tell us why you want a Lulo Card"></textarea>
+      <button type="submit">Submit Application</button>
+    </form>
+  </div>
+
+  <footer>
+    &copy; 2025 Lulo Card. All rights reserved.
+  </footer>
 </body>
 </html>

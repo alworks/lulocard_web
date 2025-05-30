@@ -1,9 +1,143 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lulo Card</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #ffffff;
+      color: #333;
+      line-height: 1.6;
+    }
+    header {
+      background-color: #ffcc00;
+      padding: 1rem;
+      text-align: center;
+    }
+    header img {
+      max-height: 60px;
+      vertical-align: middle;
+    }
+    h1 {
+      margin-top: 1rem;
+      font-size: 2rem;
+      color: #222;
+    }
+    .content {
+      padding: 2rem;
+      text-align: center;
+    }
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .feature {
+      background-color: #f9f9f9;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      padding: 1.5rem;
+      width: 280px;
+    }
+    .feature h3 {
+      color: #ff6600;
+      margin-bottom: 1rem;
+    }
+    .cta-button {
+      display: inline-block;
+      margin-top: 2rem;
+      background-color: #ff6600;
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+    .cta-button:hover {
+      background-color: #cc5200;
+    }
+    form {
+      margin-top: 3rem;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: left;
+    }
+    form input, form textarea {
+      width: 100%;
+      padding: 0.8rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    form button {
+      background-color: #ff6600;
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    form button:hover {
+      background-color: #cc5200;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background-color: #f0f0f0;
+      color: #666;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
 <body>
+  <header>
+    <img src="lulo-logo.png" alt="Lulo Card Logo">
+    <h1>Welcome to Lulo Card</h1>
+  </header>
 
-<h1>My First Heading</h1>
-<p>My first paragraph.</p>
+  <div class="content">
+    <p>Lulo Card is your fresh new way to manage payments with flavor and freedom. Experience the power of secure, smart, and simple credit built for the future.</p>
 
+    <div class="features">
+      <div class="feature">
+        <h3>Global Payments</h3>
+        <p>Use your Lulo Card anywhere in the world with competitive exchange rates and zero hidden fees.</p>
+      </div>
+      <div class="feature">
+        <h3>Mobile Ready</h3>
+        <p>Manage your card, transactions, and limits from our sleek mobile app—anytime, anywhere.</p>
+      </div>
+      <div class="feature">
+        <h3>Rewarding Experience</h3>
+        <p>Earn rewards every time you use your Lulo Card—spend smarter and get more from your purchases.</p>
+      </div>
+    </div>
+
+    <a class="cta-button" href="#apply">Apply Now</a>
+
+    <form id="apply" action="mailto:info@lulocard.com" method="POST" enctype="text/plain">
+      <h2>Apply for Your Lulo Card</h2>
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" rows="4" placeholder="Tell us why you want a Lulo Card"></textarea>
+      <button type="submit">Submit Application</button>
+    </form>
+  </div>
+
+  <footer>
+    &copy; 2025 Lulo Card. All rights reserved.
+  </footer>
 </body>
 </html>

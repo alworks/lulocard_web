@@ -47,9 +47,39 @@ Montserrat from Google Fonts, weights 400-800. Hero text uses `clamp()` for flui
 
 Sections alternate between light and dark backgrounds: cream → white → cream → dark green (stats) → cream → white → dark green (footer). New sections should follow this rhythm.
 
+## Internationalization (i18n)
+
+The site supports 6 languages: English, Spanish, French, Korean, Turkish, and Japanese. The system works as follows:
+
+### How it works
+
+All translatable text elements have `data-i18n` attributes with dot-notation keys (e.g. `data-i18n="hero.title"`). Placeholder text uses `data-i18n-ph`. Elements containing HTML (like the hero title with its `<span>`) use `data-i18n-html="true"` to allow innerHTML replacement.
+
+The translations live in a single `T` object in the `<script>` block, keyed by language code (`en`, `es`, `fr`, `ko`, `tr`, `ja`). The `applyLang()` function iterates all `[data-i18n]` and `[data-i18n-ph]` elements and swaps their content.
+
+### Language detection
+
+1. Checks `localStorage` for a saved preference (`lulo-lang` key)
+2. Falls back to `navigator.language` (browser setting)
+3. Defaults to English if no match
+
+### Adding a new language
+
+1. Add a new key to the `T` object (e.g. `T.pt = { ... }`) with all the same keys as `T.en`
+2. Add a new `<option>` to the `#langSwitcher` select element in the nav
+3. That's it — the engine handles the rest
+
+### Adding new translatable content
+
+When adding new sections or text, add `data-i18n="section.key"` to the element, then add the corresponding key to every language in the `T` object.
+
+### Language switcher
+
+A dropdown in the nav bar (visible on desktop and mobile) lets users manually switch languages. The choice is persisted in `localStorage`.
+
 ## Forms
 
-Both Contact and Register forms have client-side validation with inline error messages and success states with confetti animations. Currently data logs to `console.log()` only — no backend or form service is connected.
+Both Contact and Register forms have client-side validation with inline error messages and success states with confetti animations. Currently data logs to `console.log()` only — no backend or form service is connected. All form labels, placeholders, error messages, and success messages are fully translated.
 
 To connect forms to a real backend, update the form submit handlers in the `<script>` block at the bottom of `index.html`. Replace the `console.log` + success display with a `fetch()` call to your endpoint.
 
@@ -64,3 +94,4 @@ To connect forms to a real backend, update the form submit handlers in the `<scr
 - Connect forms to a backend or form service (Formspree, Supabase, custom API)
 - Add custom domain support
 - Create dedicated privacy policy and terms of service pages (footer links currently point to #contact as interim)
+- Add more languages if needed (see i18n section above)

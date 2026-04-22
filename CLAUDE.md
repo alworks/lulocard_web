@@ -11,9 +11,8 @@ The entire site lives in `index.html`. There is no build tool, bundler, or frame
 ### File Structure
 
 - `index.html` — The full site (nav, hero, about, features, how-it-works, stats, contact, register, footer)
-- `lulo-logo.png` — Brand logo (lulo fruit cross-section)
+- `lulo-logo.png` — Brand logo (lulo fruit cross-section), also used as favicon
 - `.github/workflows/deploy.yml` — GitHub Pages deployment (auto-deploys on push to main)
-- `test.html`, `webpage.html` — Legacy files, not in use
 
 ## Design System
 
@@ -64,5 +63,4 @@ To connect forms to a real backend, update the form submit handlers in the `<scr
 
 - Connect forms to a backend or form service (Formspree, Supabase, custom API)
 - Add custom domain support
-- Clean up legacy files (test.html, webpage.html)
-- Consider adding a privacy policy and terms of service page
+- Create dedicated privacy policy and terms of service pages (footer links currently point to #contact as interim)

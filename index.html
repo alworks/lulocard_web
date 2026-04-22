@@ -111,6 +111,37 @@
       box-shadow: 0 4px 12px rgba(232,148,26,0.4);
     }
 
+    /* Language switcher */
+    .lang-switcher-li { display: flex; align-items: center; }
+
+    .lang-switcher {
+      background: rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.85);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 6px;
+      padding: 0.3rem 0.4rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+      letter-spacing: 0.05em;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='rgba(255,255,255,0.6)'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 0.4rem center;
+      padding-right: 1.3rem;
+      transition: border-color 0.2s;
+    }
+
+    .lang-switcher:hover { border-color: var(--yellow); }
+
+    .lang-switcher option {
+      background: var(--green-dark);
+      color: var(--white);
+    }
+
     /* Mobile menu toggle */
     .menu-toggle {
       display: none;
@@ -1116,11 +1147,21 @@
       <span></span><span></span><span></span>
     </button>
     <ul class="nav-links" id="navLinks">
-      <li><a href="#about">About</a></li>
-      <li><a href="#features">Features</a></li>
-      <li><a href="#how">How It Works</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><a href="#register" class="nav-cta">Register</a></li>
+      <li><a href="#about" data-i18n="nav.about">About</a></li>
+      <li><a href="#features" data-i18n="nav.features">Features</a></li>
+      <li><a href="#how" data-i18n="nav.how">How It Works</a></li>
+      <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+      <li><a href="#register" class="nav-cta" data-i18n="nav.register">Register</a></li>
+      <li class="lang-switcher-li">
+        <select id="langSwitcher" class="lang-switcher" aria-label="Language">
+          <option value="en">EN</option>
+          <option value="es">ES</option>
+          <option value="fr">FR</option>
+          <option value="ko">KO</option>
+          <option value="tr">TR</option>
+          <option value="ja">JA</option>
+        </select>
+      </li>
     </ul>
   </nav>
 
@@ -1133,14 +1174,14 @@
     <div class="hero-deco hero-deco-5"></div>
     <div class="hero-content">
       <img class="hero-logo" src="lulo-logo.png" alt="Lulo Card Logo">
-      <h1>Finance with <span>Fresh Flavor</span></h1>
-      <p>Secure, smart, and simple credit built for the future. Experience payments with zero hidden fees and rewards that actually matter.</p>
+      <h1 data-i18n="hero.title" data-i18n-html="true">Finance with <span>Fresh Flavor</span></h1>
+      <p data-i18n="hero.subtitle">Secure, smart, and simple credit built for the future. Experience payments with zero hidden fees and rewards that actually matter.</p>
       <div class="hero-buttons">
         <a class="btn-primary" href="#register">
-          Get Your Card
+          <span data-i18n="hero.cta">Get Your Card</span>
           <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
         </a>
-        <a class="btn-secondary" href="#contact">Contact Us</a>
+        <a class="btn-secondary" href="#contact" data-i18n="hero.contact">Contact Us</a>
       </div>
     </div>
   </section>
@@ -1152,26 +1193,26 @@
         <div class="about-card-mockup">
           <img class="card-logo" src="lulo-logo.png" alt="Lulo">
           <div class="card-number">•••• •••• •••• 4829</div>
-          <div class="card-name">Cardholder Name</div>
+          <div class="card-name" data-i18n="about.cardholder">Cardholder Name</div>
         </div>
       </div>
       <div class="about-text animate-on-scroll">
-        <span class="section-label">About Us</span>
-        <h2>The card that grows with you</h2>
-        <p>Lulo Card was born from a simple belief: financial tools should be as fresh and vibrant as the people who use them. We combine cutting-edge security with a rewarding experience that puts you first.</p>
-        <p>Whether you're shopping locally or traveling the world, Lulo Card adapts to your lifestyle with smart limits, real-time notifications, and rewards that make every purchase count.</p>
+        <span class="section-label" data-i18n="about.label">About Us</span>
+        <h2 data-i18n="about.title">The card that grows with you</h2>
+        <p data-i18n="about.p1">Lulo Card was born from a simple belief: financial tools should be as fresh and vibrant as the people who use them. We combine cutting-edge security with a rewarding experience that puts you first.</p>
+        <p data-i18n="about.p2">Whether you're shopping locally or traveling the world, Lulo Card adapts to your lifestyle with smart limits, real-time notifications, and rewards that make every purchase count.</p>
         <div class="about-highlights">
           <div class="about-highlight">
             <div class="check">&#10003;</div>
-            <span>No annual fee</span>
+            <span data-i18n="about.h1">No annual fee</span>
           </div>
           <div class="about-highlight">
             <div class="check">&#10003;</div>
-            <span>Instant approval</span>
+            <span data-i18n="about.h2">Instant approval</span>
           </div>
           <div class="about-highlight">
             <div class="check">&#10003;</div>
-            <span>Real-time alerts</span>
+            <span data-i18n="about.h3">Real-time alerts</span>
           </div>
         </div>
       </div>
@@ -1180,65 +1221,65 @@
 
   <!-- ═══ Features ═══ -->
   <section class="features-section" id="features">
-    <span class="section-label">Features</span>
-    <h2 class="section-title">Built Different</h2>
-    <p class="section-subtitle">Everything you need from a card, nothing you don't.</p>
+    <span class="section-label" data-i18n="feat.label">Features</span>
+    <h2 class="section-title" data-i18n="feat.title">Built Different</h2>
+    <p class="section-subtitle" data-i18n="feat.subtitle">Everything you need from a card, nothing you don't.</p>
 
     <div class="features-grid">
       <div class="feature-card animate-on-scroll delay-1">
         <div class="feature-icon globe">&#127758;</div>
-        <h3>Global Payments</h3>
-        <p>Use your Lulo Card anywhere in the world with competitive exchange rates and zero hidden fees.</p>
+        <h3 data-i18n="feat.f1t">Global Payments</h3>
+        <p data-i18n="feat.f1d">Use your Lulo Card anywhere in the world with competitive exchange rates and zero hidden fees.</p>
       </div>
       <div class="feature-card animate-on-scroll delay-2">
         <div class="feature-icon mobile">&#128241;</div>
-        <h3>Mobile Ready</h3>
-        <p>Manage your card, transactions, and limits from our sleek mobile app — anytime, anywhere.</p>
+        <h3 data-i18n="feat.f2t">Mobile Ready</h3>
+        <p data-i18n="feat.f2d">Manage your card, transactions, and limits from our sleek mobile app — anytime, anywhere.</p>
       </div>
       <div class="feature-card animate-on-scroll delay-3">
         <div class="feature-icon rewards">&#11088;</div>
-        <h3>Rewarding Experience</h3>
-        <p>Earn rewards every time you use your Lulo Card — spend smarter and get more from your purchases.</p>
+        <h3 data-i18n="feat.f3t">Rewarding Experience</h3>
+        <p data-i18n="feat.f3d">Earn rewards every time you use your Lulo Card — spend smarter and get more from your purchases.</p>
       </div>
       <div class="feature-card animate-on-scroll delay-1">
         <div class="feature-icon secure">&#128274;</div>
-        <h3>Bank-Grade Security</h3>
-        <p>Advanced encryption, biometric authentication, and real-time fraud monitoring keep your money safe.</p>
+        <h3 data-i18n="feat.f4t">Bank-Grade Security</h3>
+        <p data-i18n="feat.f4d">Advanced encryption, biometric authentication, and real-time fraud monitoring keep your money safe.</p>
       </div>
       <div class="feature-card animate-on-scroll delay-2">
         <div class="feature-icon fast">&#9889;</div>
-        <h3>Instant Transfers</h3>
-        <p>Send and receive money in seconds, not days. Split bills, pay friends, or move funds between accounts.</p>
+        <h3 data-i18n="feat.f5t">Instant Transfers</h3>
+        <p data-i18n="feat.f5d">Send and receive money in seconds, not days. Split bills, pay friends, or move funds between accounts.</p>
       </div>
       <div class="feature-card animate-on-scroll delay-3">
         <div class="feature-icon smart">&#128202;</div>
-        <h3>Smart Insights</h3>
-        <p>Track spending patterns, set budgets, and get personalized tips to make your money work harder.</p>
+        <h3 data-i18n="feat.f6t">Smart Insights</h3>
+        <p data-i18n="feat.f6d">Track spending patterns, set budgets, and get personalized tips to make your money work harder.</p>
       </div>
     </div>
   </section>
 
   <!-- ═══ How It Works ═══ -->
   <section class="how-section" id="how">
-    <span class="section-label">How It Works</span>
-    <h2 class="section-title">Up and Running in Minutes</h2>
-    <p class="section-subtitle">Getting started with Lulo Card is as easy as 1-2-3.</p>
+    <span class="section-label" data-i18n="how.label">How It Works</span>
+    <h2 class="section-title" data-i18n="how.title">Up and Running in Minutes</h2>
+    <p class="section-subtitle" data-i18n="how.subtitle">Getting started with Lulo Card is as easy as 1-2-3.</p>
 
     <div class="steps-grid">
       <div class="step animate-on-scroll delay-1">
         <div class="step-number">1</div>
-        <h3>Register</h3>
-        <p>Fill out a quick form with your basic info. No paperwork, no branch visits.</p>
+        <h3 data-i18n="how.s1t">Register</h3>
+        <p data-i18n="how.s1d">Fill out a quick form with your basic info. No paperwork, no branch visits.</p>
       </div>
       <div class="step animate-on-scroll delay-2">
         <div class="step-number">2</div>
-        <h3>Get Approved</h3>
-        <p>Our smart system reviews your application and responds within minutes.</p>
+        <h3 data-i18n="how.s2t">Get Approved</h3>
+        <p data-i18n="how.s2d">Our smart system reviews your application and responds within minutes.</p>
       </div>
       <div class="step animate-on-scroll delay-3">
         <div class="step-number">3</div>
-        <h3>Start Using</h3>
-        <p>Your virtual card is ready instantly. Physical card arrives within days.</p>
+        <h3 data-i18n="how.s3t">Start Using</h3>
+        <p data-i18n="how.s3d">Your virtual card is ready instantly. Physical card arrives within days.</p>
       </div>
     </div>
   </section>
@@ -1248,19 +1289,19 @@
     <div class="stats-grid">
       <div class="stat animate-on-scroll delay-1">
         <div class="stat-number">150+</div>
-        <div class="stat-label">Countries</div>
+        <div class="stat-label" data-i18n="stats.countries">Countries</div>
       </div>
       <div class="stat animate-on-scroll delay-2">
         <div class="stat-number">0%</div>
-        <div class="stat-label">Hidden Fees</div>
+        <div class="stat-label" data-i18n="stats.fees">Hidden Fees</div>
       </div>
       <div class="stat animate-on-scroll delay-3">
         <div class="stat-number">100%</div>
-        <div class="stat-label">Secure</div>
+        <div class="stat-label" data-i18n="stats.secure">Secure</div>
       </div>
       <div class="stat animate-on-scroll delay-4">
         <div class="stat-number">2M+</div>
-        <div class="stat-label">Happy Users</div>
+        <div class="stat-label" data-i18n="stats.users">Happy Users</div>
       </div>
     </div>
   </section>
@@ -1269,70 +1310,70 @@
   <section class="contact-section" id="contact">
     <div class="contact-layout">
       <div class="contact-info animate-on-scroll">
-        <span class="section-label">Get In Touch</span>
-        <h2>We'd love to hear from you</h2>
-        <p>Have a question, partnership idea, or just want to say hello? Send us a message and our team will get back to you within 24 hours.</p>
+        <span class="section-label" data-i18n="contact.label">Get In Touch</span>
+        <h2 data-i18n="contact.title">We'd love to hear from you</h2>
+        <p data-i18n="contact.subtitle">Have a question, partnership idea, or just want to say hello? Send us a message and our team will get back to you within 24 hours.</p>
 
         <div class="contact-detail">
           <div class="icon-circle">&#128231;</div>
           <div>
-            <h4>Email</h4>
+            <h4 data-i18n="contact.email">Email</h4>
             <p>info@lulocard.com</p>
           </div>
         </div>
         <div class="contact-detail">
           <div class="icon-circle">&#128205;</div>
           <div>
-            <h4>Location</h4>
-            <p>Bogota, Colombia</p>
+            <h4 data-i18n="contact.location">Location</h4>
+            <p data-i18n="contact.locationVal">Bogota, Colombia</p>
           </div>
         </div>
         <div class="contact-detail">
           <div class="icon-circle">&#128337;</div>
           <div>
-            <h4>Hours</h4>
-            <p>Mon – Fri, 9am – 6pm COT</p>
+            <h4 data-i18n="contact.hours">Hours</h4>
+            <p data-i18n="contact.hoursVal">Mon – Fri, 9am – 6pm COT</p>
           </div>
         </div>
       </div>
 
       <div class="form-container">
         <div id="contactFormContent">
-          <h2>Send a Message</h2>
-          <p class="form-desc">All fields marked with * are required.</p>
+          <h2 data-i18n="contact.formTitle">Send a Message</h2>
+          <p class="form-desc" data-i18n="contact.formDesc">All fields marked with * are required.</p>
           <form id="contactForm" novalidate>
             <div class="form-group">
-              <label for="c-name">Full Name *</label>
-              <input type="text" id="c-name" name="name" placeholder="Your name" required>
-              <div class="form-error" id="c-name-error">Please enter your name.</div>
+              <label for="c-name" data-i18n="contact.nameLabel">Full Name *</label>
+              <input type="text" id="c-name" name="name" data-i18n-ph="contact.namePh" placeholder="Your name" required>
+              <div class="form-error" id="c-name-error" data-i18n="contact.nameErr">Please enter your name.</div>
             </div>
             <div class="form-group">
-              <label for="c-email">Email Address *</label>
+              <label for="c-email" data-i18n="contact.emailLabel">Email Address *</label>
               <input type="email" id="c-email" name="email" placeholder="you@example.com" required>
-              <div class="form-error" id="c-email-error">Please enter a valid email address.</div>
+              <div class="form-error" id="c-email-error" data-i18n="contact.emailErr">Please enter a valid email address.</div>
             </div>
             <div class="form-group">
-              <label for="c-subject">Subject</label>
+              <label for="c-subject" data-i18n="contact.subjectLabel">Subject</label>
               <select id="c-subject" name="subject">
-                <option value="">Select a topic...</option>
-                <option value="general">General Inquiry</option>
-                <option value="support">Support</option>
-                <option value="partnership">Partnership</option>
-                <option value="press">Press</option>
+                <option value="" data-i18n="contact.subjectPh">Select a topic...</option>
+                <option value="general" data-i18n="contact.subjectGeneral">General Inquiry</option>
+                <option value="support" data-i18n="contact.subjectSupport">Support</option>
+                <option value="partnership" data-i18n="contact.subjectPartner">Partnership</option>
+                <option value="press" data-i18n="contact.subjectPress">Press</option>
               </select>
             </div>
             <div class="form-group">
-              <label for="c-message">Message *</label>
-              <textarea id="c-message" name="message" placeholder="How can we help you?" required></textarea>
-              <div class="form-error" id="c-message-error">Please enter a message.</div>
+              <label for="c-message" data-i18n="contact.msgLabel">Message *</label>
+              <textarea id="c-message" name="message" data-i18n-ph="contact.msgPh" placeholder="How can we help you?" required></textarea>
+              <div class="form-error" id="c-message-error" data-i18n="contact.msgErr">Please enter a message.</div>
             </div>
-            <button type="submit" class="submit-btn">Send Message</button>
+            <button type="submit" class="submit-btn" data-i18n="contact.submit">Send Message</button>
           </form>
         </div>
         <div class="form-success" id="contactSuccess">
           <div class="success-icon">&#10003;</div>
-          <h3>Message Sent!</h3>
-          <p>Thanks for reaching out. We'll get back to you within 24 hours.</p>
+          <h3 data-i18n="contact.successTitle">Message Sent!</h3>
+          <p data-i18n="contact.successMsg">Thanks for reaching out. We'll get back to you within 24 hours.</p>
         </div>
       </div>
     </div>
@@ -1342,87 +1383,87 @@
   <section class="register-section" id="register">
     <div class="register-wrapper">
       <div class="register-benefits animate-on-scroll">
-        <span class="section-label">Join Lulo</span>
-        <h2>Start your fresh finance journey</h2>
-        <p>Create your account in under two minutes and get your virtual card instantly. No paperwork. No waiting.</p>
+        <span class="section-label" data-i18n="reg.label">Join Lulo</span>
+        <h2 data-i18n="reg.title">Start your fresh finance journey</h2>
+        <p data-i18n="reg.subtitle">Create your account in under two minutes and get your virtual card instantly. No paperwork. No waiting.</p>
 
         <div class="benefit-item">
           <div class="b-icon">&#127775;</div>
           <div>
-            <h4>Instant Virtual Card</h4>
-            <p>Start shopping online immediately after approval.</p>
+            <h4 data-i18n="reg.b1t">Instant Virtual Card</h4>
+            <p data-i18n="reg.b1d">Start shopping online immediately after approval.</p>
           </div>
         </div>
         <div class="benefit-item">
           <div class="b-icon">&#128176;</div>
           <div>
-            <h4>Welcome Bonus</h4>
-            <p>Earn double rewards on your first 3 months of purchases.</p>
+            <h4 data-i18n="reg.b2t">Welcome Bonus</h4>
+            <p data-i18n="reg.b2d">Earn double rewards on your first 3 months of purchases.</p>
           </div>
         </div>
         <div class="benefit-item">
           <div class="b-icon">&#128272;</div>
           <div>
-            <h4>No Commitment</h4>
-            <p>Zero annual fee. Cancel anytime, no questions asked.</p>
+            <h4 data-i18n="reg.b3t">No Commitment</h4>
+            <p data-i18n="reg.b3d">Zero annual fee. Cancel anytime, no questions asked.</p>
           </div>
         </div>
       </div>
 
       <div class="form-container">
         <div id="registerFormContent">
-          <h2>Create Your Account</h2>
-          <p class="form-desc">Fill in your details to get started.</p>
+          <h2 data-i18n="reg.formTitle">Create Your Account</h2>
+          <p class="form-desc" data-i18n="reg.formDesc">Fill in your details to get started.</p>
           <form id="registerForm" novalidate>
             <div class="form-row">
               <div class="form-group">
-                <label for="r-first">First Name *</label>
+                <label for="r-first" data-i18n="reg.firstName">First Name *</label>
                 <input type="text" id="r-first" name="firstName" placeholder="Diego" required>
-                <div class="form-error" id="r-first-error">Required.</div>
+                <div class="form-error" id="r-first-error" data-i18n="reg.required">Required.</div>
               </div>
               <div class="form-group">
-                <label for="r-last">Last Name *</label>
+                <label for="r-last" data-i18n="reg.lastName">Last Name *</label>
                 <input type="text" id="r-last" name="lastName" placeholder="Baez" required>
-                <div class="form-error" id="r-last-error">Required.</div>
+                <div class="form-error" id="r-last-error" data-i18n="reg.required">Required.</div>
               </div>
             </div>
             <div class="form-group">
-              <label for="r-email">Email Address *</label>
+              <label for="r-email" data-i18n="reg.emailLabel">Email Address *</label>
               <input type="email" id="r-email" name="email" placeholder="diego@example.com" required>
-              <div class="form-error" id="r-email-error">Please enter a valid email address.</div>
+              <div class="form-error" id="r-email-error" data-i18n="reg.emailErr">Please enter a valid email address.</div>
             </div>
             <div class="form-group">
-              <label for="r-phone">Phone Number *</label>
+              <label for="r-phone" data-i18n="reg.phoneLabel">Phone Number *</label>
               <input type="tel" id="r-phone" name="phone" placeholder="+57 300 123 4567" required>
-              <div class="form-error" id="r-phone-error">Please enter your phone number.</div>
+              <div class="form-error" id="r-phone-error" data-i18n="reg.phoneErr">Please enter your phone number.</div>
             </div>
             <div class="form-group">
-              <label for="r-country">Country *</label>
+              <label for="r-country" data-i18n="reg.countryLabel">Country *</label>
               <select id="r-country" name="country" required>
-                <option value="">Select your country...</option>
+                <option value="" data-i18n="reg.countryPh">Select your country...</option>
                 <option value="CO">Colombia</option>
-                <option value="MX">Mexico</option>
-                <option value="US">United States</option>
-                <option value="BR">Brazil</option>
+                <option value="MX" data-i18n="reg.countryMX">Mexico</option>
+                <option value="US" data-i18n="reg.countryUS">United States</option>
+                <option value="BR" data-i18n="reg.countryBR">Brazil</option>
                 <option value="AR">Argentina</option>
                 <option value="CL">Chile</option>
-                <option value="PE">Peru</option>
+                <option value="PE" data-i18n="reg.countryPE">Peru</option>
                 <option value="EC">Ecuador</option>
-                <option value="OTHER">Other</option>
+                <option value="OTHER" data-i18n="reg.countryOther">Other</option>
               </select>
-              <div class="form-error" id="r-country-error">Please select your country.</div>
+              <div class="form-error" id="r-country-error" data-i18n="reg.countryErr">Please select your country.</div>
             </div>
             <div class="form-group">
-              <label for="r-reason">Why do you want a Lulo Card?</label>
-              <textarea id="r-reason" name="reason" rows="3" placeholder="Tell us a bit about yourself..."></textarea>
+              <label for="r-reason" data-i18n="reg.reasonLabel">Why do you want a Lulo Card?</label>
+              <textarea id="r-reason" name="reason" rows="3" data-i18n-ph="reg.reasonPh" placeholder="Tell us a bit about yourself..."></textarea>
             </div>
-            <button type="submit" class="submit-btn">Create Account</button>
+            <button type="submit" class="submit-btn" data-i18n="reg.submit">Create Account</button>
           </form>
         </div>
         <div class="form-success" id="registerSuccess">
           <div class="success-icon">&#127881;</div>
-          <h3>Welcome to Lulo!</h3>
-          <p>Your application has been received. Check your email for next steps.</p>
+          <h3 data-i18n="reg.successTitle">Welcome to Lulo!</h3>
+          <p data-i18n="reg.successMsg">Your application has been received. Check your email for next steps.</p>
         </div>
       </div>
     </div>
@@ -1433,44 +1474,158 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <img src="lulo-logo.png" alt="Lulo Card">
-        <p>Fresh finance for a connected world. Secure, smart, and simple credit built for the future.</p>
+        <p data-i18n="footer.desc">Fresh finance for a connected world. Secure, smart, and simple credit built for the future.</p>
       </div>
       <div class="footer-col">
-        <h4>Product</h4>
+        <h4 data-i18n="footer.product">Product</h4>
         <ul>
-          <li><a href="#features">Features</a></li>
-          <li><a href="#how">How It Works</a></li>
-          <li><a href="#register">Register</a></li>
+          <li><a href="#features" data-i18n="nav.features">Features</a></li>
+          <li><a href="#how" data-i18n="nav.how">How It Works</a></li>
+          <li><a href="#register" data-i18n="nav.register">Register</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4>Company</h4>
+        <h4 data-i18n="footer.company">Company</h4>
         <ul>
-          <li><a href="#about">About Us</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="#about" data-i18n="about.label">About Us</a></li>
+          <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4>Legal</h4>
+        <h4 data-i18n="footer.legal">Legal</h4>
         <ul>
-          <li><a href="#contact">Privacy Policy</a></li>
-          <li><a href="#contact">Terms of Service</a></li>
+          <li><a href="#contact" data-i18n="footer.privacy">Privacy Policy</a></li>
+          <li><a href="#contact" data-i18n="footer.terms">Terms of Service</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2026 Lulo Card. All rights reserved.</p>
+      <p data-i18n="footer.copy">&copy; 2026 Lulo Card. All rights reserved.</p>
     </div>
   </footer>
 
   <!-- ═══ JavaScript ═══ -->
   <script>
-    // Navbar scroll effect
+    // ── Translations ──
+    var T = {
+      en: {
+        "nav.about":"About","nav.features":"Features","nav.how":"How It Works","nav.contact":"Contact","nav.register":"Register",
+        "hero.title":"Finance with <span>Fresh Flavor</span>","hero.subtitle":"Secure, smart, and simple credit built for the future. Experience payments with zero hidden fees and rewards that actually matter.","hero.cta":"Get Your Card","hero.contact":"Contact Us",
+        "about.label":"About Us","about.title":"The card that grows with you","about.p1":"Lulo Card was born from a simple belief: financial tools should be as fresh and vibrant as the people who use them. We combine cutting-edge security with a rewarding experience that puts you first.","about.p2":"Whether you're shopping locally or traveling the world, Lulo Card adapts to your lifestyle with smart limits, real-time notifications, and rewards that make every purchase count.","about.h1":"No annual fee","about.h2":"Instant approval","about.h3":"Real-time alerts","about.cardholder":"Cardholder Name",
+        "feat.label":"Features","feat.title":"Built Different","feat.subtitle":"Everything you need from a card, nothing you don't.","feat.f1t":"Global Payments","feat.f1d":"Use your Lulo Card anywhere in the world with competitive exchange rates and zero hidden fees.","feat.f2t":"Mobile Ready","feat.f2d":"Manage your card, transactions, and limits from our sleek mobile app — anytime, anywhere.","feat.f3t":"Rewarding Experience","feat.f3d":"Earn rewards every time you use your Lulo Card — spend smarter and get more from your purchases.","feat.f4t":"Bank-Grade Security","feat.f4d":"Advanced encryption, biometric authentication, and real-time fraud monitoring keep your money safe.","feat.f5t":"Instant Transfers","feat.f5d":"Send and receive money in seconds, not days. Split bills, pay friends, or move funds between accounts.","feat.f6t":"Smart Insights","feat.f6d":"Track spending patterns, set budgets, and get personalized tips to make your money work harder.",
+        "how.label":"How It Works","how.title":"Up and Running in Minutes","how.subtitle":"Getting started with Lulo Card is as easy as 1-2-3.","how.s1t":"Register","how.s1d":"Fill out a quick form with your basic info. No paperwork, no branch visits.","how.s2t":"Get Approved","how.s2d":"Our smart system reviews your application and responds within minutes.","how.s3t":"Start Using","how.s3d":"Your virtual card is ready instantly. Physical card arrives within days.",
+        "stats.countries":"Countries","stats.fees":"Hidden Fees","stats.secure":"Secure","stats.users":"Happy Users",
+        "contact.label":"Get In Touch","contact.title":"We'd love to hear from you","contact.subtitle":"Have a question, partnership idea, or just want to say hello? Send us a message and our team will get back to you within 24 hours.","contact.email":"Email","contact.location":"Location","contact.locationVal":"Bogota, Colombia","contact.hours":"Hours","contact.hoursVal":"Mon – Fri, 9am – 6pm COT","contact.formTitle":"Send a Message","contact.formDesc":"All fields marked with * are required.","contact.nameLabel":"Full Name *","contact.namePh":"Your name","contact.nameErr":"Please enter your name.","contact.emailLabel":"Email Address *","contact.emailErr":"Please enter a valid email address.","contact.subjectLabel":"Subject","contact.subjectPh":"Select a topic...","contact.subjectGeneral":"General Inquiry","contact.subjectSupport":"Support","contact.subjectPartner":"Partnership","contact.subjectPress":"Press","contact.msgLabel":"Message *","contact.msgPh":"How can we help you?","contact.msgErr":"Please enter a message.","contact.submit":"Send Message","contact.successTitle":"Message Sent!","contact.successMsg":"Thanks for reaching out. We'll get back to you within 24 hours.",
+        "reg.label":"Join Lulo","reg.title":"Start your fresh finance journey","reg.subtitle":"Create your account in under two minutes and get your virtual card instantly. No paperwork. No waiting.","reg.b1t":"Instant Virtual Card","reg.b1d":"Start shopping online immediately after approval.","reg.b2t":"Welcome Bonus","reg.b2d":"Earn double rewards on your first 3 months of purchases.","reg.b3t":"No Commitment","reg.b3d":"Zero annual fee. Cancel anytime, no questions asked.","reg.formTitle":"Create Your Account","reg.formDesc":"Fill in your details to get started.","reg.firstName":"First Name *","reg.lastName":"Last Name *","reg.required":"Required.","reg.emailLabel":"Email Address *","reg.emailErr":"Please enter a valid email address.","reg.phoneLabel":"Phone Number *","reg.phoneErr":"Please enter your phone number.","reg.countryLabel":"Country *","reg.countryPh":"Select your country...","reg.countryMX":"Mexico","reg.countryUS":"United States","reg.countryBR":"Brazil","reg.countryPE":"Peru","reg.countryOther":"Other","reg.countryErr":"Please select your country.","reg.reasonLabel":"Why do you want a Lulo Card?","reg.reasonPh":"Tell us a bit about yourself...","reg.submit":"Create Account","reg.successTitle":"Welcome to Lulo!","reg.successMsg":"Your application has been received. Check your email for next steps.",
+        "footer.desc":"Fresh finance for a connected world. Secure, smart, and simple credit built for the future.","footer.product":"Product","footer.company":"Company","footer.legal":"Legal","footer.privacy":"Privacy Policy","footer.terms":"Terms of Service","footer.copy":"© 2026 Lulo Card. All rights reserved."
+      },
+      es: {
+        "nav.about":"Nosotros","nav.features":"Funciones","nav.how":"Cómo Funciona","nav.contact":"Contacto","nav.register":"Registrarse",
+        "hero.title":"Finanzas con <span>Sabor Fresco</span>","hero.subtitle":"Crédito seguro, inteligente y simple, diseñado para el futuro. Pagos sin comisiones ocultas y recompensas que realmente importan.","hero.cta":"Obtén Tu Tarjeta","hero.contact":"Contáctanos",
+        "about.label":"Nosotros","about.title":"La tarjeta que crece contigo","about.p1":"Lulo Card nació de una creencia simple: las herramientas financieras deben ser tan frescas y vibrantes como las personas que las usan. Combinamos seguridad de vanguardia con una experiencia gratificante que te pone primero.","about.p2":"Ya sea que compres localmente o viajes por el mundo, Lulo Card se adapta a tu estilo de vida con límites inteligentes, notificaciones en tiempo real y recompensas que hacen que cada compra cuente.","about.h1":"Sin cuota anual","about.h2":"Aprobación instantánea","about.h3":"Alertas en tiempo real","about.cardholder":"Nombre del Titular",
+        "feat.label":"Funciones","feat.title":"Diferente por Diseño","feat.subtitle":"Todo lo que necesitas en una tarjeta, nada que no.","feat.f1t":"Pagos Globales","feat.f1d":"Usa tu Lulo Card en cualquier parte del mundo con tasas de cambio competitivas y cero comisiones ocultas.","feat.f2t":"Lista para Móvil","feat.f2d":"Administra tu tarjeta, transacciones y límites desde nuestra app móvil — en cualquier momento y lugar.","feat.f3t":"Experiencia Gratificante","feat.f3d":"Gana recompensas cada vez que usas tu Lulo Card — gasta de forma inteligente y obtén más de tus compras.","feat.f4t":"Seguridad Bancaria","feat.f4d":"Cifrado avanzado, autenticación biométrica y monitoreo de fraude en tiempo real mantienen tu dinero seguro.","feat.f5t":"Transferencias Instantáneas","feat.f5d":"Envía y recibe dinero en segundos, no en días. Divide cuentas, paga a amigos o mueve fondos entre cuentas.","feat.f6t":"Análisis Inteligente","feat.f6d":"Rastrea patrones de gasto, establece presupuestos y recibe consejos personalizados para que tu dinero rinda más.",
+        "how.label":"Cómo Funciona","how.title":"Listo en Minutos","how.subtitle":"Comenzar con Lulo Card es tan fácil como 1-2-3.","how.s1t":"Regístrate","how.s1d":"Completa un formulario rápido con tu información básica. Sin papeleo, sin visitas a sucursales.","how.s2t":"Aprobación","how.s2d":"Nuestro sistema inteligente revisa tu solicitud y responde en minutos.","how.s3t":"Comienza a Usar","how.s3d":"Tu tarjeta virtual está lista al instante. La tarjeta física llega en días.",
+        "stats.countries":"Países","stats.fees":"Comisiones Ocultas","stats.secure":"Seguro","stats.users":"Usuarios Felices",
+        "contact.label":"Contáctanos","contact.title":"Nos encantaría saber de ti","contact.subtitle":"¿Tienes una pregunta, idea de colaboración o simplemente quieres saludar? Envíanos un mensaje y nuestro equipo te responderá en 24 horas.","contact.email":"Correo","contact.location":"Ubicación","contact.locationVal":"Bogotá, Colombia","contact.hours":"Horario","contact.hoursVal":"Lun – Vie, 9am – 6pm COT","contact.formTitle":"Enviar un Mensaje","contact.formDesc":"Los campos marcados con * son obligatorios.","contact.nameLabel":"Nombre Completo *","contact.namePh":"Tu nombre","contact.nameErr":"Por favor ingresa tu nombre.","contact.emailLabel":"Correo Electrónico *","contact.emailErr":"Por favor ingresa un correo válido.","contact.subjectLabel":"Asunto","contact.subjectPh":"Selecciona un tema...","contact.subjectGeneral":"Consulta General","contact.subjectSupport":"Soporte","contact.subjectPartner":"Colaboración","contact.subjectPress":"Prensa","contact.msgLabel":"Mensaje *","contact.msgPh":"¿Cómo podemos ayudarte?","contact.msgErr":"Por favor ingresa un mensaje.","contact.submit":"Enviar Mensaje","contact.successTitle":"¡Mensaje Enviado!","contact.successMsg":"Gracias por escribirnos. Te responderemos en 24 horas.",
+        "reg.label":"Únete a Lulo","reg.title":"Comienza tu viaje financiero fresco","reg.subtitle":"Crea tu cuenta en menos de dos minutos y obtén tu tarjeta virtual al instante. Sin papeleo. Sin esperas.","reg.b1t":"Tarjeta Virtual Instantánea","reg.b1d":"Comienza a comprar en línea inmediatamente después de la aprobación.","reg.b2t":"Bono de Bienvenida","reg.b2d":"Gana el doble de recompensas en tus primeros 3 meses de compras.","reg.b3t":"Sin Compromiso","reg.b3d":"Sin cuota anual. Cancela cuando quieras, sin preguntas.","reg.formTitle":"Crea Tu Cuenta","reg.formDesc":"Completa tus datos para comenzar.","reg.firstName":"Nombre *","reg.lastName":"Apellido *","reg.required":"Obligatorio.","reg.emailLabel":"Correo Electrónico *","reg.emailErr":"Por favor ingresa un correo válido.","reg.phoneLabel":"Teléfono *","reg.phoneErr":"Por favor ingresa tu número de teléfono.","reg.countryLabel":"País *","reg.countryPh":"Selecciona tu país...","reg.countryMX":"México","reg.countryUS":"Estados Unidos","reg.countryBR":"Brasil","reg.countryPE":"Perú","reg.countryOther":"Otro","reg.countryErr":"Por favor selecciona tu país.","reg.reasonLabel":"¿Por qué quieres una Lulo Card?","reg.reasonPh":"Cuéntanos un poco sobre ti...","reg.submit":"Crear Cuenta","reg.successTitle":"¡Bienvenido a Lulo!","reg.successMsg":"Tu solicitud ha sido recibida. Revisa tu correo para los próximos pasos.",
+        "footer.desc":"Finanzas frescas para un mundo conectado. Crédito seguro, inteligente y simple, diseñado para el futuro.","footer.product":"Producto","footer.company":"Empresa","footer.legal":"Legal","footer.privacy":"Política de Privacidad","footer.terms":"Términos de Servicio","footer.copy":"© 2026 Lulo Card. Todos los derechos reservados."
+      },
+      fr: {
+        "nav.about":"À propos","nav.features":"Fonctionnalités","nav.how":"Comment ça marche","nav.contact":"Contact","nav.register":"S'inscrire",
+        "hero.title":"La finance avec <span>une touche fraîche</span>","hero.subtitle":"Un crédit sécurisé, intelligent et simple, conçu pour l'avenir. Des paiements sans frais cachés et des récompenses qui comptent vraiment.","hero.cta":"Obtenir Votre Carte","hero.contact":"Nous Contacter",
+        "about.label":"À propos","about.title":"La carte qui évolue avec vous","about.p1":"Lulo Card est née d'une conviction simple : les outils financiers doivent être aussi frais et dynamiques que les personnes qui les utilisent. Nous combinons une sécurité de pointe avec une expérience enrichissante qui vous place en priorité.","about.p2":"Que vous fassiez vos achats localement ou que vous voyagiez à travers le monde, Lulo Card s'adapte à votre style de vie avec des limites intelligentes, des notifications en temps réel et des récompenses qui comptent.","about.h1":"Sans frais annuels","about.h2":"Approbation instantanée","about.h3":"Alertes en temps réel","about.cardholder":"Nom du Titulaire",
+        "feat.label":"Fonctionnalités","feat.title":"Conçue Différemment","feat.subtitle":"Tout ce dont vous avez besoin, rien de superflu.","feat.f1t":"Paiements Mondiaux","feat.f1d":"Utilisez votre Lulo Card partout dans le monde avec des taux de change compétitifs et zéro frais cachés.","feat.f2t":"Prête pour le Mobile","feat.f2d":"Gérez votre carte, vos transactions et vos limites depuis notre application mobile élégante — à tout moment, partout.","feat.f3t":"Expérience Récompensante","feat.f3d":"Gagnez des récompenses à chaque utilisation de votre Lulo Card — dépensez plus intelligemment.","feat.f4t":"Sécurité Bancaire","feat.f4d":"Chiffrement avancé, authentification biométrique et surveillance des fraudes en temps réel protègent votre argent.","feat.f5t":"Transferts Instantanés","feat.f5d":"Envoyez et recevez de l'argent en quelques secondes. Partagez les additions, payez vos amis ou déplacez vos fonds.","feat.f6t":"Analyses Intelligentes","feat.f6d":"Suivez vos habitudes de dépenses, fixez des budgets et recevez des conseils personnalisés.",
+        "how.label":"Comment ça marche","how.title":"Opérationnel en Minutes","how.subtitle":"Commencer avec Lulo Card est aussi simple que 1-2-3.","how.s1t":"Inscription","how.s1d":"Remplissez un formulaire rapide avec vos informations. Sans paperasse, sans visite en agence.","how.s2t":"Approbation","how.s2d":"Notre système intelligent examine votre demande et répond en quelques minutes.","how.s3t":"Commencez à Utiliser","how.s3d":"Votre carte virtuelle est prête instantanément. La carte physique arrive en quelques jours.",
+        "stats.countries":"Pays","stats.fees":"Frais Cachés","stats.secure":"Sécurisé","stats.users":"Utilisateurs Satisfaits",
+        "contact.label":"Nous Contacter","contact.title":"Nous serions ravis de vous entendre","contact.subtitle":"Une question, une idée de partenariat ou un simple bonjour ? Envoyez-nous un message et notre équipe vous répondra sous 24 heures.","contact.email":"Email","contact.location":"Adresse","contact.locationVal":"Bogota, Colombie","contact.hours":"Horaires","contact.hoursVal":"Lun – Ven, 9h – 18h COT","contact.formTitle":"Envoyer un Message","contact.formDesc":"Les champs marqués d'un * sont obligatoires.","contact.nameLabel":"Nom Complet *","contact.namePh":"Votre nom","contact.nameErr":"Veuillez entrer votre nom.","contact.emailLabel":"Adresse Email *","contact.emailErr":"Veuillez entrer une adresse email valide.","contact.subjectLabel":"Sujet","contact.subjectPh":"Choisissez un sujet...","contact.subjectGeneral":"Demande Générale","contact.subjectSupport":"Support","contact.subjectPartner":"Partenariat","contact.subjectPress":"Presse","contact.msgLabel":"Message *","contact.msgPh":"Comment pouvons-nous vous aider ?","contact.msgErr":"Veuillez entrer un message.","contact.submit":"Envoyer le Message","contact.successTitle":"Message Envoyé !","contact.successMsg":"Merci de nous avoir contactés. Nous vous répondrons sous 24 heures.",
+        "reg.label":"Rejoindre Lulo","reg.title":"Commencez votre aventure financière","reg.subtitle":"Créez votre compte en moins de deux minutes et obtenez votre carte virtuelle instantanément. Sans paperasse. Sans attente.","reg.b1t":"Carte Virtuelle Instantanée","reg.b1d":"Commencez vos achats en ligne immédiatement après l'approbation.","reg.b2t":"Bonus de Bienvenue","reg.b2d":"Gagnez le double de récompenses pendant vos 3 premiers mois.","reg.b3t":"Sans Engagement","reg.b3d":"Aucun frais annuel. Annulez à tout moment, sans questions.","reg.formTitle":"Créer Votre Compte","reg.formDesc":"Remplissez vos informations pour commencer.","reg.firstName":"Prénom *","reg.lastName":"Nom *","reg.required":"Obligatoire.","reg.emailLabel":"Adresse Email *","reg.emailErr":"Veuillez entrer une adresse email valide.","reg.phoneLabel":"Téléphone *","reg.phoneErr":"Veuillez entrer votre numéro de téléphone.","reg.countryLabel":"Pays *","reg.countryPh":"Sélectionnez votre pays...","reg.countryMX":"Mexique","reg.countryUS":"États-Unis","reg.countryBR":"Brésil","reg.countryPE":"Pérou","reg.countryOther":"Autre","reg.countryErr":"Veuillez sélectionner votre pays.","reg.reasonLabel":"Pourquoi souhaitez-vous une Lulo Card ?","reg.reasonPh":"Parlez-nous un peu de vous...","reg.submit":"Créer le Compte","reg.successTitle":"Bienvenue chez Lulo !","reg.successMsg":"Votre demande a été reçue. Consultez votre email pour les prochaines étapes.",
+        "footer.desc":"Des finances fraîches pour un monde connecté. Un crédit sécurisé, intelligent et simple, conçu pour l'avenir.","footer.product":"Produit","footer.company":"Entreprise","footer.legal":"Légal","footer.privacy":"Politique de Confidentialité","footer.terms":"Conditions d'Utilisation","footer.copy":"© 2026 Lulo Card. Tous droits réservés."
+      },
+      ko: {
+        "nav.about":"소개","nav.features":"기능","nav.how":"이용 방법","nav.contact":"문의","nav.register":"가입",
+        "hero.title":"<span>신선한 금융</span>의 시작","hero.subtitle":"미래를 위한 안전하고 스마트하며 간편한 신용카드. 숨겨진 수수료 없는 결제와 실질적인 리워드를 경험하세요.","hero.cta":"카드 신청하기","hero.contact":"문의하기",
+        "about.label":"소개","about.title":"당신과 함께 성장하는 카드","about.p1":"Lulo Card는 간단한 믿음에서 탄생했습니다: 금융 도구는 사용하는 사람만큼 신선하고 활기차야 한다는 것입니다. 최첨단 보안과 고객 우선의 보상 경험을 결합합니다.","about.p2":"국내 쇼핑이든 세계 여행이든, Lulo Card는 스마트한 한도, 실시간 알림, 모든 구매를 가치 있게 만드는 리워드로 당신의 라이프스타일에 맞춰집니다.","about.h1":"연회비 없음","about.h2":"즉시 승인","about.h3":"실시간 알림","about.cardholder":"카드 소유자명",
+        "feat.label":"기능","feat.title":"차별화된 설계","feat.subtitle":"카드에 필요한 모든 것, 불필요한 것은 없습니다.","feat.f1t":"글로벌 결제","feat.f1d":"경쟁력 있는 환율과 숨겨진 수수료 없이 전 세계 어디서나 Lulo Card를 사용하세요.","feat.f2t":"모바일 최적화","feat.f2d":"세련된 모바일 앱에서 카드, 거래, 한도를 관리하세요 — 언제 어디서나.","feat.f3t":"보상 경험","feat.f3d":"Lulo Card를 사용할 때마다 리워드를 적립하세요 — 더 똑똑하게 소비하고 더 많이 받으세요.","feat.f4t":"은행급 보안","feat.f4d":"고급 암호화, 생체 인증, 실시간 사기 모니터링으로 당신의 자산을 안전하게 보호합니다.","feat.f5t":"즉시 송금","feat.f5d":"며칠이 아닌 몇 초 만에 송금하고 받으세요. 더치페이, 친구에게 송금, 계좌 간 이체가 가능합니다.","feat.f6t":"스마트 인사이트","feat.f6d":"지출 패턴을 추적하고 예산을 설정하며 맞춤형 팁으로 자산을 더 효율적으로 관리하세요.",
+        "how.label":"이용 방법","how.title":"몇 분 만에 시작","how.subtitle":"Lulo Card 시작은 1-2-3처럼 간단합니다.","how.s1t":"가입","how.s1d":"기본 정보로 간단한 양식을 작성하세요. 서류 없이, 지점 방문 없이.","how.s2t":"승인","how.s2d":"스마트 시스템이 신청서를 검토하고 몇 분 내에 응답합니다.","how.s3t":"사용 시작","how.s3d":"가상 카드가 즉시 준비됩니다. 실물 카드는 며칠 내에 도착합니다.",
+        "stats.countries":"국가","stats.fees":"숨겨진 수수료","stats.secure":"보안","stats.users":"행복한 사용자",
+        "contact.label":"문의하기","contact.title":"여러분의 이야기를 듣고 싶습니다","contact.subtitle":"질문, 제휴 아이디어, 또는 인사를 전하고 싶으신가요? 메시지를 보내주시면 24시간 내에 답변드리겠습니다.","contact.email":"이메일","contact.location":"위치","contact.locationVal":"보고타, 콜롬비아","contact.hours":"운영시간","contact.hoursVal":"월 – 금, 오전 9시 – 오후 6시 COT","contact.formTitle":"메시지 보내기","contact.formDesc":"* 표시된 항목은 필수입니다.","contact.nameLabel":"이름 *","contact.namePh":"이름을 입력하세요","contact.nameErr":"이름을 입력해주세요.","contact.emailLabel":"이메일 주소 *","contact.emailErr":"유효한 이메일 주소를 입력해주세요.","contact.subjectLabel":"제목","contact.subjectPh":"주제를 선택하세요...","contact.subjectGeneral":"일반 문의","contact.subjectSupport":"고객 지원","contact.subjectPartner":"제휴","contact.subjectPress":"보도","contact.msgLabel":"메시지 *","contact.msgPh":"어떻게 도와드릴까요?","contact.msgErr":"메시지를 입력해주세요.","contact.submit":"메시지 보내기","contact.successTitle":"메시지 전송 완료!","contact.successMsg":"연락해 주셔서 감사합니다. 24시간 내에 답변드리겠습니다.",
+        "reg.label":"Lulo 가입","reg.title":"신선한 금융 여정을 시작하세요","reg.subtitle":"2분 이내에 계정을 만들고 즉시 가상 카드를 받으세요. 서류 없이. 기다림 없이.","reg.b1t":"즉시 가상 카드","reg.b1d":"승인 후 즉시 온라인 쇼핑을 시작하세요.","reg.b2t":"웰컴 보너스","reg.b2d":"처음 3개월 구매에 대해 2배 리워드를 적립하세요.","reg.b3t":"약정 없음","reg.b3d":"연회비 없음. 언제든 해지 가능, 질문 없음.","reg.formTitle":"계정 만들기","reg.formDesc":"시작하려면 정보를 입력하세요.","reg.firstName":"이름 *","reg.lastName":"성 *","reg.required":"필수 항목입니다.","reg.emailLabel":"이메일 주소 *","reg.emailErr":"유효한 이메일 주소를 입력해주세요.","reg.phoneLabel":"전화번호 *","reg.phoneErr":"전화번호를 입력해주세요.","reg.countryLabel":"국가 *","reg.countryPh":"국가를 선택하세요...","reg.countryMX":"멕시코","reg.countryUS":"미국","reg.countryBR":"브라질","reg.countryPE":"페루","reg.countryOther":"기타","reg.countryErr":"국가를 선택해주세요.","reg.reasonLabel":"Lulo Card를 원하는 이유는?","reg.reasonPh":"자신에 대해 알려주세요...","reg.submit":"계정 만들기","reg.successTitle":"Lulo에 오신 것을 환영합니다!","reg.successMsg":"신청이 접수되었습니다. 다음 단계는 이메일을 확인하세요.",
+        "footer.desc":"연결된 세계를 위한 신선한 금융. 미래를 위한 안전하고 스마트하며 간편한 신용카드.","footer.product":"제품","footer.company":"회사","footer.legal":"법적 고지","footer.privacy":"개인정보 보호정책","footer.terms":"이용약관","footer.copy":"© 2026 Lulo Card. 모든 권리 보유."
+      },
+      tr: {
+        "nav.about":"Hakkımızda","nav.features":"Özellikler","nav.how":"Nasıl Çalışır","nav.contact":"İletişim","nav.register":"Kayıt Ol",
+        "hero.title":"<span>Taze Bir Lezzet</span> ile Finans","hero.subtitle":"Geleceğe yönelik güvenli, akıllı ve basit kredi. Gizli ücret olmadan ödemeler ve gerçekten önemli ödüller.","hero.cta":"Kartını Al","hero.contact":"Bize Ulaşın",
+        "about.label":"Hakkımızda","about.title":"Seninle birlikte büyüyen kart","about.p1":"Lulo Card basit bir inançtan doğdu: finansal araçlar, onları kullanan insanlar kadar taze ve canlı olmalıdır. En son teknolojiyle güvenliği, sizi ön plana koyan ödüllendirici bir deneyimle birleştiriyoruz.","about.p2":"İster yerel alışveriş yapın ister dünyayı gezin, Lulo Card akıllı limitler, anlık bildirimler ve her alışverişi değerli kılan ödüllerle yaşam tarzınıza uyum sağlar.","about.h1":"Yıllık ücret yok","about.h2":"Anında onay","about.h3":"Gerçek zamanlı uyarılar","about.cardholder":"Kart Sahibi Adı",
+        "feat.label":"Özellikler","feat.title":"Farklı Tasarlandı","feat.subtitle":"Bir kartta ihtiyacınız olan her şey, ihtiyacınız olmayan hiçbir şey.","feat.f1t":"Küresel Ödemeler","feat.f1d":"Rekabetçi döviz kurları ve sıfır gizli ücretle dünyanın her yerinde Lulo Card'ınızı kullanın.","feat.f2t":"Mobil Hazır","feat.f2d":"Şık mobil uygulamamızdan kartınızı, işlemlerinizi ve limitlerizi yönetin — her zaman, her yerde.","feat.f3t":"Ödüllendirici Deneyim","feat.f3d":"Lulo Card'ınızı her kullandığınızda ödüller kazanın — daha akıllıca harcayın ve daha fazlasını elde edin.","feat.f4t":"Banka Düzeyinde Güvenlik","feat.f4d":"Gelişmiş şifreleme, biyometrik doğrulama ve gerçek zamanlı dolandırıcılık izleme paranızı güvende tutar.","feat.f5t":"Anında Transferler","feat.f5d":"Günler değil, saniyeler içinde para gönderin ve alın. Hesapları bölün, arkadaşlarınıza ödeyin veya fonları taşıyın.","feat.f6t":"Akıllı Analizler","feat.f6d":"Harcama kalıplarını takip edin, bütçeler belirleyin ve paranızı daha verimli kullanmak için kişiselleştirilmiş ipuçları alın.",
+        "how.label":"Nasıl Çalışır","how.title":"Dakikalar İçinde Hazır","how.subtitle":"Lulo Card ile başlamak 1-2-3 kadar kolay.","how.s1t":"Kayıt Ol","how.s1d":"Temel bilgilerinizle hızlı bir form doldurun. Evrak yok, şube ziyareti yok.","how.s2t":"Onay Al","how.s2d":"Akıllı sistemimiz başvurunuzu inceler ve dakikalar içinde yanıt verir.","how.s3t":"Kullanmaya Başla","how.s3d":"Sanal kartınız anında hazır. Fiziksel kart günler içinde elinizde.",
+        "stats.countries":"Ülke","stats.fees":"Gizli Ücret","stats.secure":"Güvenli","stats.users":"Mutlu Kullanıcı",
+        "contact.label":"İletişim","contact.title":"Sizden haber almak isteriz","contact.subtitle":"Bir sorunuz, ortaklık fikriniz mi var veya sadece merhaba mı demek istiyorsunuz? Bize mesaj gönderin, ekibimiz 24 saat içinde size dönecektir.","contact.email":"E-posta","contact.location":"Konum","contact.locationVal":"Bogota, Kolombiya","contact.hours":"Çalışma Saatleri","contact.hoursVal":"Pzt – Cum, 09:00 – 18:00 COT","contact.formTitle":"Mesaj Gönder","contact.formDesc":"* ile işaretli alanlar zorunludur.","contact.nameLabel":"Ad Soyad *","contact.namePh":"Adınız","contact.nameErr":"Lütfen adınızı girin.","contact.emailLabel":"E-posta Adresi *","contact.emailErr":"Lütfen geçerli bir e-posta adresi girin.","contact.subjectLabel":"Konu","contact.subjectPh":"Bir konu seçin...","contact.subjectGeneral":"Genel Soru","contact.subjectSupport":"Destek","contact.subjectPartner":"Ortaklık","contact.subjectPress":"Basın","contact.msgLabel":"Mesaj *","contact.msgPh":"Size nasıl yardımcı olabiliriz?","contact.msgErr":"Lütfen bir mesaj girin.","contact.submit":"Mesaj Gönder","contact.successTitle":"Mesaj Gönderildi!","contact.successMsg":"Bize ulaştığınız için teşekkürler. 24 saat içinde size döneceğiz.",
+        "reg.label":"Lulo'ya Katıl","reg.title":"Taze finans yolculuğuna başla","reg.subtitle":"İki dakikadan kısa sürede hesabınızı oluşturun ve sanal kartınızı anında alın. Evrak yok. Bekleme yok.","reg.b1t":"Anında Sanal Kart","reg.b1d":"Onaydan hemen sonra çevrimiçi alışverişe başlayın.","reg.b2t":"Hoş Geldin Bonusu","reg.b2d":"İlk 3 aylık alışverişlerinizde çift ödül kazanın.","reg.b3t":"Taahhüt Yok","reg.b3d":"Yıllık ücret yok. İstediğiniz zaman iptal edin, soru sorulmaz.","reg.formTitle":"Hesabınızı Oluşturun","reg.formDesc":"Başlamak için bilgilerinizi girin.","reg.firstName":"Ad *","reg.lastName":"Soyad *","reg.required":"Zorunlu.","reg.emailLabel":"E-posta Adresi *","reg.emailErr":"Lütfen geçerli bir e-posta adresi girin.","reg.phoneLabel":"Telefon Numarası *","reg.phoneErr":"Lütfen telefon numaranızı girin.","reg.countryLabel":"Ülke *","reg.countryPh":"Ülkenizi seçin...","reg.countryMX":"Meksika","reg.countryUS":"Amerika Birleşik Devletleri","reg.countryBR":"Brezilya","reg.countryPE":"Peru","reg.countryOther":"Diğer","reg.countryErr":"Lütfen ülkenizi seçin.","reg.reasonLabel":"Neden bir Lulo Card istiyorsunuz?","reg.reasonPh":"Kendinizden biraz bahsedin...","reg.submit":"Hesap Oluştur","reg.successTitle":"Lulo'ya Hoş Geldiniz!","reg.successMsg":"Başvurunuz alındı. Sonraki adımlar için e-postanızı kontrol edin.",
+        "footer.desc":"Bağlı bir dünya için taze finans. Geleceğe yönelik güvenli, akıllı ve basit kredi.","footer.product":"Ürün","footer.company":"Şirket","footer.legal":"Yasal","footer.privacy":"Gizlilik Politikası","footer.terms":"Kullanım Koşulları","footer.copy":"© 2026 Lulo Card. Tüm hakları saklıdır."
+      },
+      ja: {
+        "nav.about":"概要","nav.features":"機能","nav.how":"ご利用方法","nav.contact":"お問い合わせ","nav.register":"登録",
+        "hero.title":"<span>フレッシュな</span>ファイナンス","hero.subtitle":"未来のための安全でスマート、シンプルなクレジット。隠れた手数料ゼロの決済と、本当に価値のあるリワードを体験してください。","hero.cta":"カードを取得","hero.contact":"お問い合わせ",
+        "about.label":"概要","about.title":"あなたと共に成長するカード","about.p1":"Lulo Cardはシンプルな信念から生まれました：金融ツールは、それを使う人々と同じくらいフレッシュで活気あるものであるべきだということです。最先端のセキュリティと、お客様を第一に考えるリワード体験を組み合わせています。","about.p2":"国内でのショッピングでも世界旅行でも、Lulo Cardはスマートな利用限度額、リアルタイム通知、すべての購入を価値あるものにするリワードであなたのライフスタイルに適応します。","about.h1":"年会費無料","about.h2":"即時承認","about.h3":"リアルタイム通知","about.cardholder":"カード所有者名",
+        "feat.label":"機能","feat.title":"違いのある設計","feat.subtitle":"カードに必要なものすべて、不要なものはゼロ。","feat.f1t":"グローバル決済","feat.f1d":"競争力のある為替レートと隠れた手数料ゼロで、世界中どこでもLulo Cardをご利用いただけます。","feat.f2t":"モバイル対応","feat.f2d":"洗練されたモバイルアプリからカード、取引、限度額を管理 — いつでも、どこでも。","feat.f3t":"リワード体験","feat.f3d":"Lulo Cardを使うたびにリワードを獲得 — よりスマートに使い、より多くを得ましょう。","feat.f4t":"銀行レベルのセキュリティ","feat.f4d":"高度な暗号化、生体認証、リアルタイム不正検知があなたのお金を安全に守ります。","feat.f5t":"即時送金","feat.f5d":"数日ではなく数秒で送受金。割り勘、友人への送金、口座間の資金移動が可能です。","feat.f6t":"スマート分析","feat.f6d":"支出パターンを追跡し、予算を設定し、パーソナライズされたヒントでお金をより効率的に活用しましょう。",
+        "how.label":"ご利用方法","how.title":"数分で開始","how.subtitle":"Lulo Cardの開始は1-2-3と同じくらい簡単です。","how.s1t":"登録","how.s1d":"基本情報で簡単なフォームに記入。書類不要、店舗訪問不要。","how.s2t":"承認を取得","how.s2d":"スマートシステムが申請を審査し、数分以内に回答します。","how.s3t":"利用開始","how.s3d":"バーチャルカードは即座に準備完了。物理カードは数日以内にお届けします。",
+        "stats.countries":"カ国","stats.fees":"隠れた手数料","stats.secure":"安全","stats.users":"満足ユーザー",
+        "contact.label":"お問い合わせ","contact.title":"お気軽にご連絡ください","contact.subtitle":"ご質問、提携のアイデア、またはご挨拶がありましたら、メッセージをお送りください。24時間以内にチームからご返信いたします。","contact.email":"メール","contact.location":"所在地","contact.locationVal":"ボゴタ、コロンビア","contact.hours":"営業時間","contact.hoursVal":"月〜金、午前9時〜午後6時 COT","contact.formTitle":"メッセージを送る","contact.formDesc":"* の付いた項目は必須です。","contact.nameLabel":"氏名 *","contact.namePh":"お名前","contact.nameErr":"名前を入力してください。","contact.emailLabel":"メールアドレス *","contact.emailErr":"有効なメールアドレスを入力してください。","contact.subjectLabel":"件名","contact.subjectPh":"トピックを選択...","contact.subjectGeneral":"一般的なお問い合わせ","contact.subjectSupport":"サポート","contact.subjectPartner":"パートナーシップ","contact.subjectPress":"プレス","contact.msgLabel":"メッセージ *","contact.msgPh":"どのようにお手伝いできますか？","contact.msgErr":"メッセージを入力してください。","contact.submit":"メッセージを送信","contact.successTitle":"メッセージ送信完了！","contact.successMsg":"お問い合わせありがとうございます。24時間以内にご返信いたします。",
+        "reg.label":"Luloに参加","reg.title":"フレッシュな金融の旅を始めよう","reg.subtitle":"2分以内にアカウントを作成し、バーチャルカードを即座に取得。書類不要。待ち時間なし。","reg.b1t":"即時バーチャルカード","reg.b1d":"承認後すぐにオンラインショッピングを開始できます。","reg.b2t":"ウェルカムボーナス","reg.b2d":"最初の3ヶ月の購入で2倍のリワードを獲得。","reg.b3t":"縛りなし","reg.b3d":"年会費ゼロ。いつでも解約可能、質問なし。","reg.formTitle":"アカウント作成","reg.formDesc":"開始するには情報を入力してください。","reg.firstName":"名 *","reg.lastName":"姓 *","reg.required":"必須項目です。","reg.emailLabel":"メールアドレス *","reg.emailErr":"有効なメールアドレスを入力してください。","reg.phoneLabel":"電話番号 *","reg.phoneErr":"電話番号を入力してください。","reg.countryLabel":"国 *","reg.countryPh":"国を選択してください...","reg.countryMX":"メキシコ","reg.countryUS":"アメリカ合衆国","reg.countryBR":"ブラジル","reg.countryPE":"ペルー","reg.countryOther":"その他","reg.countryErr":"国を選択してください。","reg.reasonLabel":"Lulo Cardを希望する理由は？","reg.reasonPh":"ご自身について少し教えてください...","reg.submit":"アカウント作成","reg.successTitle":"Luloへようこそ！","reg.successMsg":"申請が受理されました。次のステップはメールをご確認ください。",
+        "footer.desc":"つながる世界のためのフレッシュな金融。未来のための安全でスマート、シンプルなクレジット。","footer.product":"製品","footer.company":"会社","footer.legal":"法的情報","footer.privacy":"プライバシーポリシー","footer.terms":"利用規約","footer.copy":"© 2026 Lulo Card. All rights reserved."
+      }
+    };
+
+    // ── i18n Engine ──
+    var currentLang = 'en';
+
+    function detectLang() {
+      var saved = localStorage.getItem('lulo-lang');
+      if (saved && T[saved]) return saved;
+      var nav = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
+      var base = nav.split('-')[0];
+      if (T[base]) return base;
+      return 'en';
+    }
+
+    function applyLang(lang) {
+      currentLang = lang;
+      localStorage.setItem('lulo-lang', lang);
+      document.documentElement.lang = lang;
+      document.getElementById('langSwitcher').value = lang;
+      var strings = T[lang];
+      document.querySelectorAll('[data-i18n]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n');
+        if (strings[key] !== undefined) {
+          if (el.getAttribute('data-i18n-html') === 'true') {
+            el.innerHTML = strings[key];
+          } else {
+            el.textContent = strings[key];
+          }
+        }
+      });
+      document.querySelectorAll('[data-i18n-ph]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n-ph');
+        if (strings[key] !== undefined) {
+          el.placeholder = strings[key];
+        }
+      });
+    }
+
+    // ── Init language ──
+    var initLang = detectLang();
+    applyLang(initLang);
+
+    document.getElementById('langSwitcher').addEventListener('change', function() {
+      applyLang(this.value);
+    });
+
+    // ── Navbar scroll effect ──
     window.addEventListener('scroll', function() {
       document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
     });
 
-    // Scroll-triggered animations
+    // ── Scroll-triggered animations ──
     var observer = new IntersectionObserver(function(entries) {
       entries.forEach(function(entry) {
         if (entry.isIntersecting) {
@@ -1483,7 +1638,7 @@
       observer.observe(el);
     });
 
-    // Mini confetti burst on form success
+    // ── Confetti ──
     function confetti(container) {
       var colors = ['#F5C842', '#E8941A', '#3D7A2A', '#2D6B1E', '#FFFFFF'];
       for (var i = 0; i < 40; i++) {
@@ -1502,19 +1657,18 @@
       }
     }
 
-    // Mobile menu toggle
+    // ── Mobile menu ──
     function toggleMenu() {
       document.getElementById('navLinks').classList.toggle('open');
     }
 
-    // Close mobile menu on link click
     document.querySelectorAll('#navLinks a').forEach(function(link) {
       link.addEventListener('click', function() {
         document.getElementById('navLinks').classList.remove('open');
       });
     });
 
-    // Form validation and submission
+    // ── Form helpers ──
     function validateEmail(email) {
       return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     }
@@ -1529,7 +1683,6 @@
       document.getElementById(errorId).style.display = 'none';
     }
 
-    // Clear errors on input
     document.querySelectorAll('.form-group input, .form-group textarea, .form-group select').forEach(function(el) {
       el.addEventListener('input', function() {
         this.classList.remove('error');
@@ -1538,7 +1691,7 @@
       });
     });
 
-    // Contact form
+    // ── Contact form ──
     document.getElementById('contactForm').addEventListener('submit', function(e) {
       e.preventDefault();
       var valid = true;
@@ -1556,7 +1709,6 @@
       } else { clearError('c-message', 'c-message-error'); }
 
       if (valid) {
-        // Collect form data
         var data = {
           name: document.getElementById('c-name').value,
           email: document.getElementById('c-email').value,
@@ -1564,15 +1716,13 @@
           message: document.getElementById('c-message').value
         };
         console.log('Contact form submitted:', data);
-
-        // Show success with confetti
         document.getElementById('contactFormContent').style.display = 'none';
         document.getElementById('contactSuccess').classList.add('show');
         confetti(document.getElementById('contactSuccess'));
       }
     });
 
-    // Register form
+    // ── Register form ──
     document.getElementById('registerForm').addEventListener('submit', function(e) {
       e.preventDefault();
       var valid = true;
@@ -1598,7 +1748,6 @@
       } else { clearError('r-country', 'r-country-error'); }
 
       if (valid) {
-        // Collect form data
         var data = {
           firstName: document.getElementById('r-first').value,
           lastName: document.getElementById('r-last').value,
@@ -1608,8 +1757,6 @@
           reason: document.getElementById('r-reason').value
         };
         console.log('Registration submitted:', data);
-
-        // Show success with confetti
         document.getElementById('registerFormContent').style.display = 'none';
         document.getElementById('registerSuccess').classList.add('show');
         confetti(document.getElementById('registerSuccess'));

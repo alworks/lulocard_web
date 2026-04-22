@@ -3,141 +3,1620 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lulo Card</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <title>Lulo Card — Fresh Finance</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+    :root {
+      --green-dark: #1B3A1A;
+      --green-mid: #2D6B1E;
+      --green-accent: #3D7A2A;
+      --green-light: #E8F5E3;
+      --orange: #E8941A;
+      --orange-hover: #CF7F12;
+      --yellow: #F5C842;
+      --yellow-light: #FFF8E1;
+      --cream: #FEFDF5;
+      --white: #FFFFFF;
+      --gray-100: #F7F7F5;
+      --gray-200: #EDEDEA;
+      --gray-300: #D4D4CF;
+      --gray-400: #A3A39C;
+      --gray-600: #6B6B63;
+      --gray-900: #1A1A17;
+      --red: #D94040;
+      --red-light: #FEF2F2;
     }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
     body {
       font-family: 'Montserrat', sans-serif;
-      background-color: #ffffff;
-      color: #333;
-      line-height: 1.6;
+      background-color: var(--cream);
+      color: var(--gray-900);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
     }
-    header {
-      background-color: #ffcc00;
-      padding: 1rem;
-      text-align: center;
-    }
-    header img {
-      max-height: 100px;
-      vertical-align: middle;
-    }
-    h1 {
-      margin-top: 1rem;
-      font-size: 2rem;
-      color: #222;
-    }
-    .content {
-      padding: 2rem;
-      text-align: center;
-    }
-    .features {
+
+    /* ═══════════════════════════════════════════
+       NAVIGATION
+       ═══════════════════════════════════════════ */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.85rem 3rem;
+      background: rgba(27, 58, 26, 0.97);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      transition: box-shadow 0.3s;
+    }
+
+    nav.scrolled {
+      box-shadow: 0 2px 20px rgba(0,0,0,0.25);
+    }
+
+    nav .logo-group {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+    }
+
+    nav .logo-group img { height: 38px; }
+
+    nav .brand-name {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--yellow);
+      letter-spacing: -0.02em;
+    }
+
+    nav .nav-links {
+      display: flex;
       gap: 2rem;
-      margin-top: 2rem;
+      list-style: none;
+      align-items: center;
     }
-    .feature {
-      background-color: #f9f9f9;
-      border-radius: 10px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      padding: 1.5rem;
-      width: 280px;
+
+    nav .nav-links a {
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      transition: color 0.2s;
     }
-    .feature h3 {
-      color: #ff6600;
+
+    nav .nav-links a:hover { color: var(--yellow); }
+
+    nav .nav-cta {
+      background: linear-gradient(135deg, var(--orange), var(--yellow));
+      color: var(--green-dark) !important;
+      padding: 0.5rem 1.25rem;
+      border-radius: 50px;
+      font-weight: 700 !important;
+      font-size: 0.8rem !important;
+      letter-spacing: 0.01em;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    nav .nav-cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(232,148,26,0.4);
+    }
+
+    /* Mobile menu toggle */
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--white);
+      margin: 5px 0;
+      border-radius: 2px;
+      transition: 0.3s;
+    }
+
+    /* ═══════════════════════════════════════════
+       HERO
+       ═══════════════════════════════════════════ */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: linear-gradient(160deg, var(--green-dark) 0%, #244D1F 40%, var(--green-mid) 100%);
+      overflow: hidden;
+      padding: 7rem 2rem 4rem;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -30%; right: -10%;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(245,200,66,0.12) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -20%; left: -5%;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(232,148,26,0.1) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 720px;
+    }
+
+    .hero-logo {
+      width: 120px;
+      height: auto;
+      margin-bottom: 2rem;
+      filter: drop-shadow(0 8px 24px rgba(0,0,0,0.3));
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      25% { transform: translateY(-10px) rotate(2deg); }
+      75% { transform: translateY(-6px) rotate(-2deg); }
+      50% { transform: translateY(-14px) rotate(0deg); }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes scaleIn {
+      from { opacity: 0; transform: scale(0.85); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes slideLeft {
+      from { opacity: 0; transform: translateX(-40px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes slideRight {
+      from { opacity: 0; transform: translateX(40px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(232,148,26,0.4); }
+      50% { box-shadow: 0 0 0 12px rgba(232,148,26,0); }
+    }
+
+    @keyframes shimmer {
+      0% { background-position: -200% center; }
+      100% { background-position: 200% center; }
+    }
+
+    @keyframes wiggle {
+      0%, 100% { transform: rotate(0deg); }
+      25% { transform: rotate(5deg); }
+      75% { transform: rotate(-5deg); }
+    }
+
+    @keyframes countUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Scroll-triggered animation class */
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .animate-on-scroll.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .animate-on-scroll.delay-1 { transition-delay: 0.1s; }
+    .animate-on-scroll.delay-2 { transition-delay: 0.2s; }
+    .animate-on-scroll.delay-3 { transition-delay: 0.3s; }
+    .animate-on-scroll.delay-4 { transition-delay: 0.4s; }
+    .animate-on-scroll.delay-5 { transition-delay: 0.5s; }
+
+    /* Hero decorative floating shapes */
+    .hero-deco {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero-deco-1 {
+      width: 20px; height: 20px;
+      background: rgba(245,200,66,0.25);
+      top: 20%; left: 10%;
+      animation: float 8s ease-in-out infinite;
+    }
+
+    .hero-deco-2 {
+      width: 14px; height: 14px;
+      background: rgba(232,148,26,0.2);
+      top: 60%; right: 12%;
+      animation: float 6s ease-in-out infinite 1s;
+    }
+
+    .hero-deco-3 {
+      width: 28px; height: 28px;
+      background: rgba(61,122,42,0.15);
+      bottom: 25%; left: 15%;
+      animation: float 10s ease-in-out infinite 2s;
+    }
+
+    .hero-deco-4 {
+      width: 10px; height: 10px;
+      background: rgba(245,200,66,0.3);
+      top: 35%; right: 20%;
+      animation: float 7s ease-in-out infinite 0.5s;
+    }
+
+    .hero-deco-5 {
+      width: 16px; height: 16px;
+      background: rgba(232,148,26,0.15);
+      bottom: 15%; right: 25%;
+      animation: float 9s ease-in-out infinite 1.5s;
+    }
+
+    .hero-content { animation: fadeUp 1s cubic-bezier(0.22,1,0.36,1) 0.2s both; }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(90deg, var(--yellow), var(--orange), var(--yellow));
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer 4s linear infinite;
+    }
+
+    .hero p {
+      font-size: 1.125rem;
+      color: rgba(255,255,255,0.75);
+      max-width: 540px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: linear-gradient(135deg, var(--orange), var(--yellow));
+      color: var(--green-dark);
+      padding: 1rem 2.25rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.95rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 20px rgba(232,148,26,0.35);
+      border: none;
+      cursor: pointer;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .btn-primary {
+      animation: pulse 2.5s ease-in-out infinite;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(232,148,26,0.5);
+      animation: none;
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: transparent;
+      color: var(--white);
+      padding: 1rem 2.25rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      border: 2px solid rgba(255,255,255,0.3);
+      transition: border-color 0.2s, background 0.2s;
+      cursor: pointer;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--yellow);
+      background: rgba(255,255,255,0.05);
+    }
+
+    /* Arrow icon */
+    .arrow-icon {
+      width: 18px; height: 18px;
+      transition: transform 0.2s;
+    }
+
+    .btn-primary:hover .arrow-icon { transform: translateX(3px); }
+
+    /* ═══════════════════════════════════════════
+       SECTIONS — SHARED
+       ═══════════════════════════════════════════ */
+    section { padding: 6rem 2rem; }
+
+    .section-label {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--green-accent);
+      background: rgba(61,122,42,0.1);
+      padding: 0.4rem 1rem;
+      border-radius: 50px;
       margin-bottom: 1rem;
     }
-    .cta-button {
-      display: inline-block;
-      margin-top: 2rem;
-      background-color: #ff6600;
-      color: white;
-      padding: 1rem 2rem;
-      border-radius: 5px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: background-color 0.3s ease;
+
+    .section-title {
+      font-size: clamp(1.75rem, 3vw, 2.5rem);
+      font-weight: 800;
+      color: var(--green-dark);
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
     }
-    .cta-button:hover {
-      background-color: #cc5200;
+
+    .section-subtitle {
+      font-size: 1.05rem;
+      color: var(--gray-600);
+      max-width: 560px;
+      margin: 0 auto 3rem;
     }
-    form {
-      margin-top: 3rem;
-      max-width: 500px;
-      margin-left: auto;
-      margin-right: auto;
+
+    /* ═══════════════════════════════════════════
+       ABOUT
+       ═══════════════════════════════════════════ */
+    .about-section {
+      background: var(--white);
+      text-align: center;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      max-width: 960px;
+      margin: 0 auto;
+      align-items: center;
       text-align: left;
     }
-    form input, form textarea {
-      width: 100%;
-      padding: 0.8rem;
-      margin-bottom: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 5px;
+
+    .about-visual {
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    form button {
-      background-color: #ff6600;
-      color: white;
-      padding: 0.8rem 1.5rem;
-      border: none;
-      border-radius: 5px;
+
+    .about-card-mockup {
+      width: 320px;
+      height: 200px;
+      background: linear-gradient(135deg, var(--green-dark), var(--green-mid));
+      border-radius: 16px;
+      padding: 2rem;
+      position: relative;
+      box-shadow: 0 20px 60px rgba(27,58,26,0.25);
+      overflow: hidden;
+      transition: transform 0.4s cubic-bezier(0.22,1,0.36,1), box-shadow 0.4s;
       cursor: pointer;
     }
-    form button:hover {
-      background-color: #cc5200;
+
+    .about-card-mockup:hover {
+      transform: perspective(600px) rotateY(-8deg) rotateX(4deg) scale(1.05);
+      box-shadow: 0 30px 80px rgba(27,58,26,0.35);
     }
-    footer {
+
+    .about-card-mockup::after {
+      content: '';
+      position: absolute;
+      top: -40%; right: -20%;
+      width: 200px; height: 200px;
+      background: radial-gradient(circle, rgba(245,200,66,0.15), transparent);
+      border-radius: 50%;
+    }
+
+    .about-card-mockup .card-logo {
+      height: 36px;
+      margin-bottom: 2.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .about-card-mockup .card-number {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.8);
+      letter-spacing: 0.15em;
+      position: relative;
+      z-index: 1;
+    }
+
+    .about-card-mockup .card-name {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.5);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-top: 0.75rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .about-text h2 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--green-dark);
+      margin-bottom: 1.25rem;
+      letter-spacing: -0.02em;
+    }
+
+    .about-text p {
+      color: var(--gray-600);
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+    }
+
+    .about-text p:last-of-type { margin-bottom: 2rem; }
+
+    .about-highlights {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .about-highlight {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .about-highlight .check {
+      width: 22px; height: 22px;
+      background: var(--green-light);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      color: var(--green-accent);
+      flex-shrink: 0;
+    }
+
+    .about-highlight span {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--gray-900);
+    }
+
+    /* ═══════════════════════════════════════════
+       FEATURES
+       ═══════════════════════════════════════════ */
+    .features-section {
       text-align: center;
-      padding: 2rem;
-      background-color: #f0f0f0;
-      color: #666;
-      margin-top: 2rem;
+      background: var(--cream);
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.75rem;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .feature-card {
+      background: var(--white);
+      border: 1px solid rgba(0,0,0,0.04);
+      border-radius: 16px;
+      padding: 2.25rem 2rem;
+      text-align: left;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: 0 16px 48px rgba(27,58,26,0.12);
+    }
+
+    .feature-card:hover .feature-icon {
+      animation: wiggle 0.5s ease-in-out;
+    }
+
+    .feature-icon {
+      width: 48px; height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+      font-size: 1.4rem;
+    }
+
+    .feature-icon.globe   { background: rgba(61,122,42,0.1); }
+    .feature-icon.mobile  { background: rgba(232,148,26,0.12); }
+    .feature-icon.rewards { background: rgba(245,200,66,0.18); }
+    .feature-icon.secure  { background: rgba(61,122,42,0.1); }
+    .feature-icon.fast    { background: rgba(232,148,26,0.12); }
+    .feature-icon.smart   { background: rgba(245,200,66,0.18); }
+
+    .feature-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--green-dark);
+      margin-bottom: 0.65rem;
+    }
+
+    .feature-card p {
+      font-size: 0.9rem;
+      color: var(--gray-600);
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════
+       HOW IT WORKS
+       ═══════════════════════════════════════════ */
+    .how-section {
+      background: var(--white);
+      text-align: center;
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .step {
+      position: relative;
+      padding: 2rem 1.5rem;
+    }
+
+    .step-number {
+      width: 48px; height: 48px;
+      background: linear-gradient(135deg, var(--orange), var(--yellow));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--green-dark);
+      margin: 0 auto 1.25rem;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .step:hover .step-number {
+      transform: scale(1.15) rotate(10deg);
+      box-shadow: 0 6px 20px rgba(232,148,26,0.4);
+    }
+
+    .step h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--green-dark);
+      margin-bottom: 0.5rem;
+    }
+
+    .step p {
+      font-size: 0.875rem;
+      color: var(--gray-600);
+    }
+
+    /* Connector line between steps */
+    .step:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      top: 3.5rem;
+      right: -1rem;
+      width: 2rem;
+      height: 2px;
+      background: var(--gray-300);
+    }
+
+    /* ═══════════════════════════════════════════
+       STATS BAR
+       ═══════════════════════════════════════════ */
+    .stats-bar {
+      background: var(--green-dark);
+      padding: 3.5rem 2rem;
+    }
+
+    .stats-grid {
+      display: flex;
+      justify-content: center;
+      gap: 5rem;
+      flex-wrap: wrap;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .stat { text-align: center; }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--yellow), var(--orange));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .stat-label {
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.55);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-top: 0.25rem;
+    }
+
+    /* ═══════════════════════════════════════════
+       FORMS — SHARED
+       ═══════════════════════════════════════════ */
+    .form-container {
+      max-width: 480px;
+      margin: 0 auto;
+      background: var(--white);
+      border: 1px solid rgba(0,0,0,0.06);
+      border-radius: 20px;
+      padding: 2.75rem 2.5rem;
+      box-shadow: 0 8px 40px rgba(27,58,26,0.06);
+    }
+
+    .form-container h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--green-dark);
+      margin-bottom: 0.4rem;
+    }
+
+    .form-desc {
+      font-size: 0.88rem;
+      color: var(--gray-600);
+      margin-bottom: 1.75rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.15rem;
+      text-align: left;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--gray-900);
+      margin-bottom: 0.35rem;
+      letter-spacing: 0.02em;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      border: 1.5px solid var(--gray-300);
+      border-radius: 10px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.88rem;
+      color: var(--gray-900);
+      background: var(--cream);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--green-accent);
+      box-shadow: 0 0 0 3px rgba(61,122,42,0.1);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .form-group input.error,
+    .form-group textarea.error,
+    .form-group select.error {
+      border-color: var(--red);
+      box-shadow: 0 0 0 3px rgba(217,64,64,0.08);
+    }
+
+    .form-error {
+      font-size: 0.75rem;
+      color: var(--red);
+      margin-top: 0.3rem;
+      display: none;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .submit-btn {
+      width: 100%;
+      background: linear-gradient(135deg, var(--green-mid), var(--green-accent));
+      color: var(--white);
+      padding: 0.9rem;
+      border: none;
+      border-radius: 10px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      margin-top: 0.5rem;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(45,107,30,0.3);
+    }
+
+    .submit-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    /* Form success overlay */
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 2rem 0;
+    }
+
+    .form-success.show { display: block; }
+
+    .form-success .success-icon {
+      width: 64px; height: 64px;
+      background: var(--green-light);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.25rem;
+      font-size: 1.75rem;
+    }
+
+    .form-success h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--green-dark);
+      margin-bottom: 0.5rem;
+    }
+
+    .form-success p {
+      font-size: 0.9rem;
+      color: var(--gray-600);
+    }
+
+    /* ═══════════════════════════════════════════
+       CONTACT SECTION
+       ═══════════════════════════════════════════ */
+    .contact-section {
+      background: var(--cream);
+      text-align: center;
+    }
+
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 3rem;
+      max-width: 960px;
+      margin: 0 auto;
+      align-items: start;
+    }
+
+    .contact-info {
+      text-align: left;
+      padding: 1rem 0;
+    }
+
+    .contact-info h2 {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: var(--green-dark);
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .contact-info > p {
+      color: var(--gray-600);
+      font-size: 0.95rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .contact-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .contact-detail .icon-circle {
+      width: 44px; height: 44px;
+      background: var(--green-light);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.15rem;
+      flex-shrink: 0;
+    }
+
+    .contact-detail h4 {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--green-dark);
+      margin-bottom: 0.2rem;
+    }
+
+    .contact-detail p {
+      font-size: 0.88rem;
+      color: var(--gray-600);
+    }
+
+    /* ═══════════════════════════════════════════
+       REGISTER SECTION
+       ═══════════════════════════════════════════ */
+    .register-section {
+      background: var(--white);
+      text-align: center;
+    }
+
+    .register-wrapper {
+      max-width: 960px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .register-benefits {
+      text-align: left;
+    }
+
+    .register-benefits h2 {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: var(--green-dark);
+      margin-bottom: 1rem;
+    }
+
+    .register-benefits p {
+      color: var(--gray-600);
+      margin-bottom: 2rem;
+      font-size: 0.95rem;
+    }
+
+    .benefit-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.85rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .benefit-item .b-icon {
+      width: 36px; height: 36px;
+      background: var(--yellow-light);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .benefit-item h4 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--green-dark);
+      margin-bottom: 0.15rem;
+    }
+
+    .benefit-item p {
+      font-size: 0.82rem;
+      color: var(--gray-600);
+      margin-bottom: 0;
+    }
+
+    /* ═══════════════════════════════════════════
+       FOOTER
+       ═══════════════════════════════════════════ */
+    footer {
+      background: var(--green-dark);
+      padding: 4rem 2rem 2rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem;
+      max-width: 960px;
+      margin: 0 auto 3rem;
+    }
+
+    .footer-brand img {
+      height: 40px;
+      margin-bottom: 1rem;
+    }
+
+    .footer-brand p {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.5);
+      max-width: 260px;
+      line-height: 1.6;
+    }
+
+    .footer-col h4 {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.4);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 1rem;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col ul li { margin-bottom: 0.6rem; }
+
+    .footer-col ul a {
+      color: rgba(255,255,255,0.65);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .footer-col ul a:hover { color: var(--yellow); }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 1.5rem;
+      text-align: center;
+    }
+
+    .footer-bottom p {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.35);
+    }
+
+    /* ═══════════════════════════════════════════
+       RESPONSIVE
+       ═══════════════════════════════════════════ */
+    @media (max-width: 768px) {
+      nav { padding: 0.75rem 1.25rem; }
+      nav .nav-links { display: none; }
+      nav .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0; right: 0;
+        background: var(--green-dark);
+        padding: 1rem 1.5rem 1.5rem;
+        gap: 1rem;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      }
+      .menu-toggle { display: block; }
+
+      .hero { padding: 8rem 1.5rem 4rem; }
+      .hero-logo { width: 90px; }
+
+      section { padding: 4rem 1.25rem; }
+
+      .about-grid,
+      .contact-layout,
+      .register-wrapper {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .about-visual { order: -1; }
+
+      .about-card-mockup {
+        width: 280px;
+        height: 175px;
+      }
+
+      .about-highlights { flex-direction: column; gap: 0.75rem; }
+
+      .steps-grid { gap: 1rem; }
+      .step:not(:last-child)::after { display: none; }
+
+      .stats-grid { gap: 2rem; }
+
+      .form-container { padding: 2rem 1.5rem; }
+      .form-row { grid-template-columns: 1fr; }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+      }
+
+      .footer-brand { grid-column: 1 / -1; }
+    }
+
+    @media (max-width: 420px) {
+      .hero h1 { font-size: 2rem; }
+      .hero-buttons { flex-direction: column; align-items: center; }
+      .footer-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
-  <header>
-    <img src="lulo-logo.png" alt="Lulo Card Logo">
-    <h1>Welcome to Lulo Card</h1>
-  </header>
 
-  <div class="content">
-    <p>Lulo Card is your fresh new way to manage payments with flavor and freedom. Experience the power of secure, smart, and simple credit built for the future. </p>
+  <!-- ═══ Navigation ═══ -->
+  <nav id="navbar">
+    <a class="logo-group" href="#top">
+      <img src="lulo-logo.png" alt="Lulo Card">
+      <span class="brand-name">Lulo Card</span>
+    </a>
+    <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#how">How It Works</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#register" class="nav-cta">Register</a></li>
+    </ul>
+  </nav>
 
-    <div class="features">
-      <div class="feature">
+  <!-- ═══ Hero ═══ -->
+  <section class="hero" id="top">
+    <div class="hero-deco hero-deco-1"></div>
+    <div class="hero-deco hero-deco-2"></div>
+    <div class="hero-deco hero-deco-3"></div>
+    <div class="hero-deco hero-deco-4"></div>
+    <div class="hero-deco hero-deco-5"></div>
+    <div class="hero-content">
+      <img class="hero-logo" src="lulo-logo.png" alt="Lulo Card Logo">
+      <h1>Finance with <span>Fresh Flavor</span></h1>
+      <p>Secure, smart, and simple credit built for the future. Experience payments with zero hidden fees and rewards that actually matter.</p>
+      <div class="hero-buttons">
+        <a class="btn-primary" href="#register">
+          Get Your Card
+          <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+        <a class="btn-secondary" href="#contact">Contact Us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ About ═══ -->
+  <section class="about-section" id="about">
+    <div class="about-grid">
+      <div class="about-visual animate-on-scroll">
+        <div class="about-card-mockup">
+          <img class="card-logo" src="lulo-logo.png" alt="Lulo">
+          <div class="card-number">•••• •••• •••• 4829</div>
+          <div class="card-name">Cardholder Name</div>
+        </div>
+      </div>
+      <div class="about-text animate-on-scroll">
+        <span class="section-label">About Us</span>
+        <h2>The card that grows with you</h2>
+        <p>Lulo Card was born from a simple belief: financial tools should be as fresh and vibrant as the people who use them. We combine cutting-edge security with a rewarding experience that puts you first.</p>
+        <p>Whether you're shopping locally or traveling the world, Lulo Card adapts to your lifestyle with smart limits, real-time notifications, and rewards that make every purchase count.</p>
+        <div class="about-highlights">
+          <div class="about-highlight">
+            <div class="check">&#10003;</div>
+            <span>No annual fee</span>
+          </div>
+          <div class="about-highlight">
+            <div class="check">&#10003;</div>
+            <span>Instant approval</span>
+          </div>
+          <div class="about-highlight">
+            <div class="check">&#10003;</div>
+            <span>Real-time alerts</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Features ═══ -->
+  <section class="features-section" id="features">
+    <span class="section-label">Features</span>
+    <h2 class="section-title">Built Different</h2>
+    <p class="section-subtitle">Everything you need from a card, nothing you don't.</p>
+
+    <div class="features-grid">
+      <div class="feature-card animate-on-scroll delay-1">
+        <div class="feature-icon globe">&#127758;</div>
         <h3>Global Payments</h3>
         <p>Use your Lulo Card anywhere in the world with competitive exchange rates and zero hidden fees.</p>
       </div>
-      <div class="feature">
+      <div class="feature-card animate-on-scroll delay-2">
+        <div class="feature-icon mobile">&#128241;</div>
         <h3>Mobile Ready</h3>
-        <p>Manage your card, transactions, and limits from our sleek mobile app—anytime, anywhere.</p>
+        <p>Manage your card, transactions, and limits from our sleek mobile app — anytime, anywhere.</p>
       </div>
-      <div class="feature">
+      <div class="feature-card animate-on-scroll delay-3">
+        <div class="feature-icon rewards">&#11088;</div>
         <h3>Rewarding Experience</h3>
-        <p>Earn rewards every time you use your Lulo Card—spend smarter and get more from your purchases.</p>
+        <p>Earn rewards every time you use your Lulo Card — spend smarter and get more from your purchases.</p>
+      </div>
+      <div class="feature-card animate-on-scroll delay-1">
+        <div class="feature-icon secure">&#128274;</div>
+        <h3>Bank-Grade Security</h3>
+        <p>Advanced encryption, biometric authentication, and real-time fraud monitoring keep your money safe.</p>
+      </div>
+      <div class="feature-card animate-on-scroll delay-2">
+        <div class="feature-icon fast">&#9889;</div>
+        <h3>Instant Transfers</h3>
+        <p>Send and receive money in seconds, not days. Split bills, pay friends, or move funds between accounts.</p>
+      </div>
+      <div class="feature-card animate-on-scroll delay-3">
+        <div class="feature-icon smart">&#128202;</div>
+        <h3>Smart Insights</h3>
+        <p>Track spending patterns, set budgets, and get personalized tips to make your money work harder.</p>
       </div>
     </div>
+  </section>
 
-    <a class="cta-button" href="#apply">Apply Now</a>
+  <!-- ═══ How It Works ═══ -->
+  <section class="how-section" id="how">
+    <span class="section-label">How It Works</span>
+    <h2 class="section-title">Up and Running in Minutes</h2>
+    <p class="section-subtitle">Getting started with Lulo Card is as easy as 1-2-3.</p>
 
-    <form id="apply" action="mailto:info@lulocard.com" method="POST" enctype="text/plain">
-      <h2>Apply for Your Lulo Card</h2>
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Your Email" required>
-      <textarea name="message" rows="4" placeholder="Tell us why you want a Lulo Card"></textarea>
-      <button type="submit">Submit Application</button>
-    </form>
-  </div>
+    <div class="steps-grid">
+      <div class="step animate-on-scroll delay-1">
+        <div class="step-number">1</div>
+        <h3>Register</h3>
+        <p>Fill out a quick form with your basic info. No paperwork, no branch visits.</p>
+      </div>
+      <div class="step animate-on-scroll delay-2">
+        <div class="step-number">2</div>
+        <h3>Get Approved</h3>
+        <p>Our smart system reviews your application and responds within minutes.</p>
+      </div>
+      <div class="step animate-on-scroll delay-3">
+        <div class="step-number">3</div>
+        <h3>Start Using</h3>
+        <p>Your virtual card is ready instantly. Physical card arrives within days.</p>
+      </div>
+    </div>
+  </section>
 
+  <!-- ═══ Stats ═══ -->
+  <section class="stats-bar">
+    <div class="stats-grid">
+      <div class="stat animate-on-scroll delay-1">
+        <div class="stat-number">150+</div>
+        <div class="stat-label">Countries</div>
+      </div>
+      <div class="stat animate-on-scroll delay-2">
+        <div class="stat-number">0%</div>
+        <div class="stat-label">Hidden Fees</div>
+      </div>
+      <div class="stat animate-on-scroll delay-3">
+        <div class="stat-number">24/7</div>
+        <div class="stat-label">Support</div>
+      </div>
+      <div class="stat animate-on-scroll delay-4">
+        <div class="stat-number">2M+</div>
+        <div class="stat-label">Happy Users</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Contact ═══ -->
+  <section class="contact-section" id="contact">
+    <div class="contact-layout">
+      <div class="contact-info animate-on-scroll">
+        <span class="section-label">Get In Touch</span>
+        <h2>We'd love to hear from you</h2>
+        <p>Have a question, partnership idea, or just want to say hello? Send us a message and our team will get back to you within 24 hours.</p>
+
+        <div class="contact-detail">
+          <div class="icon-circle">&#128231;</div>
+          <div>
+            <h4>Email</h4>
+            <p>info@lulocard.com</p>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="icon-circle">&#128205;</div>
+          <div>
+            <h4>Location</h4>
+            <p>Bogota, Colombia</p>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="icon-circle">&#128337;</div>
+          <div>
+            <h4>Hours</h4>
+            <p>Mon – Fri, 9am – 6pm COT</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-container">
+        <div id="contactFormContent">
+          <h2>Send a Message</h2>
+          <p class="form-desc">All fields marked with * are required.</p>
+          <form id="contactForm" novalidate>
+            <div class="form-group">
+              <label for="c-name">Full Name *</label>
+              <input type="text" id="c-name" name="name" placeholder="Your name" required>
+              <div class="form-error" id="c-name-error">Please enter your name.</div>
+            </div>
+            <div class="form-group">
+              <label for="c-email">Email Address *</label>
+              <input type="email" id="c-email" name="email" placeholder="you@example.com" required>
+              <div class="form-error" id="c-email-error">Please enter a valid email address.</div>
+            </div>
+            <div class="form-group">
+              <label for="c-subject">Subject</label>
+              <select id="c-subject" name="subject">
+                <option value="">Select a topic...</option>
+                <option value="general">General Inquiry</option>
+                <option value="support">Support</option>
+                <option value="partnership">Partnership</option>
+                <option value="press">Press</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="c-message">Message *</label>
+              <textarea id="c-message" name="message" placeholder="How can we help you?" required></textarea>
+              <div class="form-error" id="c-message-error">Please enter a message.</div>
+            </div>
+            <button type="submit" class="submit-btn">Send Message</button>
+          </form>
+        </div>
+        <div class="form-success" id="contactSuccess">
+          <div class="success-icon">&#10003;</div>
+          <h3>Message Sent!</h3>
+          <p>Thanks for reaching out. We'll get back to you within 24 hours.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Register ═══ -->
+  <section class="register-section" id="register">
+    <div class="register-wrapper">
+      <div class="register-benefits animate-on-scroll">
+        <span class="section-label">Join Lulo</span>
+        <h2>Start your fresh finance journey</h2>
+        <p>Create your account in under two minutes and get your virtual card instantly. No paperwork. No waiting.</p>
+
+        <div class="benefit-item">
+          <div class="b-icon">&#127775;</div>
+          <div>
+            <h4>Instant Virtual Card</h4>
+            <p>Start shopping online immediately after approval.</p>
+          </div>
+        </div>
+        <div class="benefit-item">
+          <div class="b-icon">&#128176;</div>
+          <div>
+            <h4>Welcome Bonus</h4>
+            <p>Earn double rewards on your first 3 months of purchases.</p>
+          </div>
+        </div>
+        <div class="benefit-item">
+          <div class="b-icon">&#128272;</div>
+          <div>
+            <h4>No Commitment</h4>
+            <p>Zero annual fee. Cancel anytime, no questions asked.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-container">
+        <div id="registerFormContent">
+          <h2>Create Your Account</h2>
+          <p class="form-desc">Fill in your details to get started.</p>
+          <form id="registerForm" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="r-first">First Name *</label>
+                <input type="text" id="r-first" name="firstName" placeholder="Diego" required>
+                <div class="form-error" id="r-first-error">Required.</div>
+              </div>
+              <div class="form-group">
+                <label for="r-last">Last Name *</label>
+                <input type="text" id="r-last" name="lastName" placeholder="Baez" required>
+                <div class="form-error" id="r-last-error">Required.</div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="r-email">Email Address *</label>
+              <input type="email" id="r-email" name="email" placeholder="diego@example.com" required>
+              <div class="form-error" id="r-email-error">Please enter a valid email address.</div>
+            </div>
+            <div class="form-group">
+              <label for="r-phone">Phone Number *</label>
+              <input type="tel" id="r-phone" name="phone" placeholder="+57 300 123 4567" required>
+              <div class="form-error" id="r-phone-error">Please enter your phone number.</div>
+            </div>
+            <div class="form-group">
+              <label for="r-country">Country *</label>
+              <select id="r-country" name="country" required>
+                <option value="">Select your country...</option>
+                <option value="CO">Colombia</option>
+                <option value="MX">Mexico</option>
+                <option value="US">United States</option>
+                <option value="BR">Brazil</option>
+                <option value="AR">Argentina</option>
+                <option value="CL">Chile</option>
+                <option value="PE">Peru</option>
+                <option value="EC">Ecuador</option>
+                <option value="OTHER">Other</option>
+              </select>
+              <div class="form-error" id="r-country-error">Please select your country.</div>
+            </div>
+            <div class="form-group">
+              <label for="r-reason">Why do you want a Lulo Card?</label>
+              <textarea id="r-reason" name="reason" rows="3" placeholder="Tell us a bit about yourself..."></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Create Account</button>
+          </form>
+        </div>
+        <div class="form-success" id="registerSuccess">
+          <div class="success-icon">&#127881;</div>
+          <h3>Welcome to Lulo!</h3>
+          <p>Your application has been received. Check your email for next steps.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Footer ═══ -->
   <footer>
-    &copy; 2025 Lulo Card. All rights reserved.
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="lulo-logo.png" alt="Lulo Card">
+        <p>Fresh finance for a connected world. Secure, smart, and simple credit built for the future.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Product</h4>
+        <ul>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#how">How It Works</a></li>
+          <li><a href="#register">Register</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Lulo Card. All rights reserved.</p>
+    </div>
   </footer>
+
+  <!-- ═══ JavaScript ═══ -->
+  <script>
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    // Scroll-triggered animations
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.animate-on-scroll').forEach(function(el) {
+      observer.observe(el);
+    });
+
+    // Mini confetti burst on form success
+    function confetti(container) {
+      var colors = ['#F5C842', '#E8941A', '#3D7A2A', '#2D6B1E', '#FFFFFF'];
+      for (var i = 0; i < 40; i++) {
+        var dot = document.createElement('div');
+        dot.style.cssText = 'position:absolute;width:' + (Math.random()*8+4) + 'px;height:' + (Math.random()*8+4) + 'px;background:' + colors[Math.floor(Math.random()*colors.length)] + ';border-radius:' + (Math.random()>0.5?'50%':'2px') + ';top:50%;left:50%;pointer-events:none;z-index:10;';
+        container.style.position = 'relative';
+        container.appendChild(dot);
+        var angle = Math.random() * Math.PI * 2;
+        var velocity = Math.random() * 120 + 60;
+        var dx = Math.cos(angle) * velocity;
+        var dy = Math.sin(angle) * velocity - 40;
+        dot.animate([
+          { transform: 'translate(0,0) scale(1)', opacity: 1 },
+          { transform: 'translate(' + dx + 'px,' + dy + 'px) scale(0)', opacity: 0 }
+        ], { duration: 800 + Math.random() * 400, easing: 'cubic-bezier(0.22,1,0.36,1)' }).onfinish = (function(d){ return function(){ d.remove(); } })(dot);
+      }
+    }
+
+    // Mobile menu toggle
+    function toggleMenu() {
+      document.getElementById('navLinks').classList.toggle('open');
+    }
+
+    // Close mobile menu on link click
+    document.querySelectorAll('#navLinks a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        document.getElementById('navLinks').classList.remove('open');
+      });
+    });
+
+    // Form validation and submission
+    function validateEmail(email) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+
+    function showError(inputId, errorId) {
+      document.getElementById(inputId).classList.add('error');
+      document.getElementById(errorId).style.display = 'block';
+    }
+
+    function clearError(inputId, errorId) {
+      document.getElementById(inputId).classList.remove('error');
+      document.getElementById(errorId).style.display = 'none';
+    }
+
+    // Clear errors on input
+    document.querySelectorAll('.form-group input, .form-group textarea, .form-group select').forEach(function(el) {
+      el.addEventListener('input', function() {
+        this.classList.remove('error');
+        var errorEl = this.parentElement.querySelector('.form-error');
+        if (errorEl) errorEl.style.display = 'none';
+      });
+    });
+
+    // Contact form
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      var valid = true;
+
+      if (!document.getElementById('c-name').value.trim()) {
+        showError('c-name', 'c-name-error'); valid = false;
+      } else { clearError('c-name', 'c-name-error'); }
+
+      if (!validateEmail(document.getElementById('c-email').value)) {
+        showError('c-email', 'c-email-error'); valid = false;
+      } else { clearError('c-email', 'c-email-error'); }
+
+      if (!document.getElementById('c-message').value.trim()) {
+        showError('c-message', 'c-message-error'); valid = false;
+      } else { clearError('c-message', 'c-message-error'); }
+
+      if (valid) {
+        // Collect form data
+        var data = {
+          name: document.getElementById('c-name').value,
+          email: document.getElementById('c-email').value,
+          subject: document.getElementById('c-subject').value,
+          message: document.getElementById('c-message').value
+        };
+        console.log('Contact form submitted:', data);
+
+        // Show success with confetti
+        document.getElementById('contactFormContent').style.display = 'none';
+        document.getElementById('contactSuccess').classList.add('show');
+        confetti(document.getElementById('contactSuccess'));
+      }
+    });
+
+    // Register form
+    document.getElementById('registerForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      var valid = true;
+
+      if (!document.getElementById('r-first').value.trim()) {
+        showError('r-first', 'r-first-error'); valid = false;
+      } else { clearError('r-first', 'r-first-error'); }
+
+      if (!document.getElementById('r-last').value.trim()) {
+        showError('r-last', 'r-last-error'); valid = false;
+      } else { clearError('r-last', 'r-last-error'); }
+
+      if (!validateEmail(document.getElementById('r-email').value)) {
+        showError('r-email', 'r-email-error'); valid = false;
+      } else { clearError('r-email', 'r-email-error'); }
+
+      if (!document.getElementById('r-phone').value.trim()) {
+        showError('r-phone', 'r-phone-error'); valid = false;
+      } else { clearError('r-phone', 'r-phone-error'); }
+
+      if (!document.getElementById('r-country').value) {
+        showError('r-country', 'r-country-error'); valid = false;
+      } else { clearError('r-country', 'r-country-error'); }
+
+      if (valid) {
+        // Collect form data
+        var data = {
+          firstName: document.getElementById('r-first').value,
+          lastName: document.getElementById('r-last').value,
+          email: document.getElementById('r-email').value,
+          phone: document.getElementById('r-phone').value,
+          country: document.getElementById('r-country').value,
+          reason: document.getElementById('r-reason').value
+        };
+        console.log('Registration submitted:', data);
+
+        // Show success with confetti
+        document.getElementById('registerFormContent').style.display = 'none';
+        document.getElementById('registerSuccess').classList.add('show');
+        confetti(document.getElementById('registerSuccess'));
+      }
+    });
+  </script>
+
 </body>
 </html>

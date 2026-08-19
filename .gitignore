@@ -1,0 +1,5 @@
+
+# Claude Code agent memory. Local working state for the coding assistant, not
+# project source — it is per-machine, goes stale independently of the code, and
+# has no meaning to anyone cloning this repo.
+memory/
